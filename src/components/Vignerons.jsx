@@ -3,11 +3,14 @@ import { Component } from "preact";
 export default class Vignerons extends Component {
   constructor() {
     super();
+
+    this.marginBtDomain = 100;
   }
 
   componentDidMount() {
     console.log("gello");
-    this.initHeightVignerons();
+    this.handleSizes();
+    this.initMouseListeners();
   }
 
   getRegion(region, regionData) {
@@ -39,17 +42,17 @@ export default class Vignerons extends Component {
     );
   }
 
-  /* js tim */
-  initHeightVignerons() {
-    document.querySelectorAll(".container-list").forEach((el) => {
+  handleSizes() {
+    document.querySelectorAll(".container-list").forEach(function (el) {
       el.children[0].classList.add("active-nom");
     });
 
     const domaines = document.querySelectorAll(".domaine-section");
+    console.log(domaines);
     domaines.forEach((el) => {
       //marginBot for each domaine
       let activeP;
-      el.querySelectorAll(".list-vigneron").forEach((el) => {
+      el.querySelectorAll(".list-vigneron").forEach(function (el) {
         if (el.classList.contains("active-nom")) {
           console.log(el);
           activeP = el;
@@ -59,11 +62,12 @@ export default class Vignerons extends Component {
       console.log(activeP.querySelector(".txt-vigneron"));
 
       const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
+      // console.log(heightPara);
       el.style.marginBottom = heightPara + 100 + "px";
 
       //Store height of container list element
+
       var heightList = el.querySelector(".container-list").offsetHeight;
-      console.log(heightList);
 
       //for each txt set top to height to container list
       el.querySelectorAll(".txt-vigneron").forEach(function (el) {
@@ -72,22 +76,23 @@ export default class Vignerons extends Component {
     });
   }
 
-  displayContentHover() {
+  initMouseListeners() {
     const elHover = document.querySelectorAll(".list-vigneron");
 
     elHover.forEach(function (el) {
-      el.addEventListener("mouseenter", (e) => {
-        console.log(e);
+      el.addEventListener("mouseenter", function (e) {
+        // console.log(e);
         e.target.parentNode
           .querySelectorAll(".list-vigneron")
           .forEach(function (el) {
             el.classList.remove("active-nom");
           });
         var elem = e.target;
+        console.log(elem.classList);
         if (elem.classList.contains("list-vigneron")) {
+          console.log("hover list-vigneron");
           elem.classList.toggle("active-nom");
         }
-        initHeightVignerons();
       });
     });
   }
