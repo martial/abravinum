@@ -39,17 +39,17 @@ export default class Vignerons extends Component {
     );
   }
 
+  /* js tim */
   initHeightVignerons() {
-    document.querySelectorAll(".container-list").forEach(function (el) {
+    document.querySelectorAll(".container-list").forEach((el) => {
       el.children[0].classList.add("active-nom");
     });
 
     const domaines = document.querySelectorAll(".domaine-section");
-    console.log(domaines);
     domaines.forEach((el) => {
       //marginBot for each domaine
       let activeP;
-      el.querySelectorAll(".list-vigneron").forEach(function (el) {
+      el.querySelectorAll(".list-vigneron").forEach((el) => {
         if (el.classList.contains("active-nom")) {
           console.log(el);
           activeP = el;
@@ -59,11 +59,9 @@ export default class Vignerons extends Component {
       console.log(activeP.querySelector(".txt-vigneron"));
 
       const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
-      // console.log(heightPara);
       el.style.marginBottom = heightPara + 100 + "px";
 
       //Store height of container list element
-
       var heightList = el.querySelector(".container-list").offsetHeight;
       console.log(heightList);
 
@@ -78,17 +76,15 @@ export default class Vignerons extends Component {
     const elHover = document.querySelectorAll(".list-vigneron");
 
     elHover.forEach(function (el) {
-      el.addEventListener("mouseenter", function (e) {
-        // console.log(e);
+      el.addEventListener("mouseenter", (e) => {
+        console.log(e);
         e.target.parentNode
           .querySelectorAll(".list-vigneron")
           .forEach(function (el) {
             el.classList.remove("active-nom");
           });
         var elem = e.target;
-        console.log(elem.classList);
         if (elem.classList.contains("list-vigneron")) {
-          console.log("hover list-vigneron");
           elem.classList.toggle("active-nom");
         }
         initHeightVignerons();
