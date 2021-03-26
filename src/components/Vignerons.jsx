@@ -27,6 +27,9 @@ export default class Vignerons extends Component {
   }
 
   getVineyard(vineyard) {
+    const descrObj = {
+      __html: vineyard.headline.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+    };
     return (
       <>
         <div class="list-vigneron">
@@ -35,7 +38,7 @@ export default class Vignerons extends Component {
           </div>
 
           <div class="txt-vigneron">
-            <p>{vineyard.headline}</p>
+            <p dangerouslySetInnerHTML={descrObj}></p>
           </div>
         </div>
       </>
