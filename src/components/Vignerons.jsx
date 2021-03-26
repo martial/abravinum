@@ -3,16 +3,71 @@ import { Component } from "preact";
 export default class Vignerons extends Component {
   constructor() {
     super();
-
-    this.marginBtDomain = 100;
   }
 
   componentDidMount() {
-    console.log("gello");
+    this.vineyardSelected();
     this.handleSizes();
     this.initMouseListeners();
+    window.addEventListener("resize", () => {
+      this.handleSizes();
+    });
   }
 
+  //js d'event
+  vineyardSelected() {
+    document.querySelectorAll(".container-list").forEach(function (el) {
+      el.children[0].classList.add("active-nom");
+    });
+  }
+
+  handleSizes() {
+    const domaines = document.querySelectorAll(".domaine-section");
+    console.log(domaines);
+    domaines.forEach((el) => {
+      //marginBot for each domaine
+      let activeP;
+      el.querySelectorAll(".list-vigneron").forEach(function (el) {
+        if (el.classList.contains("active-nom")) {
+          console.log(el);
+          activeP = el;
+        }
+      });
+      console.log(activeP.querySelector(".txt-vigneron"));
+
+      const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
+
+      el.style.marginBottom = heightPara + 75 + "px";
+      //Store height of container list element
+      var heightList = el.querySelector(".container-list").offsetHeight;
+
+      //for each txt set top to height to container list
+      el.querySelectorAll(".txt-vigneron").forEach(function (el) {
+        el.style.top = heightList + "px";
+      });
+    });
+  }
+
+  initMouseListeners() {
+    const elHover = document.querySelectorAll(".list-vigneron");
+
+    elHover.forEach(function (el) {
+      el.addEventListener("mouseenter", function (e) {
+        e.target.parentNode
+          .querySelectorAll(".list-vigneron")
+          .forEach(function (el) {
+            el.classList.remove("active-nom");
+          });
+        var elem = e.target;
+        console.log(elem.classList);
+        if (elem.classList.contains("list-vigneron")) {
+          elem.classList.toggle("active-nom");
+        }
+      });
+    });
+  }
+
+  //display content
   getRegion(region, regionData) {
     return (
       <div class="domaine-section">
@@ -45,68 +100,13 @@ export default class Vignerons extends Component {
     );
   }
 
-  handleSizes() {
-    document.querySelectorAll(".container-list").forEach(function (el) {
-      el.children[0].classList.add("active-nom");
-    });
-
-    const domaines = document.querySelectorAll(".domaine-section");
-    console.log(domaines);
-    domaines.forEach((el) => {
-      //marginBot for each domaine
-      let activeP;
-      el.querySelectorAll(".list-vigneron").forEach(function (el) {
-        if (el.classList.contains("active-nom")) {
-          console.log(el);
-          activeP = el;
-          console.log(activeP, activeP.querySelector(".txt-vigneron"));
-        }
-      });
-      console.log(activeP.querySelector(".txt-vigneron"));
-
-      const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
-      // console.log(heightPara);
-      el.style.marginBottom = heightPara + 100 + "px";
-
-      //Store height of container list element
-
-      var heightList = el.querySelector(".container-list").offsetHeight;
-
-      //for each txt set top to height to container list
-      el.querySelectorAll(".txt-vigneron").forEach(function (el) {
-        el.style.top = heightList + "px";
-      });
-    });
-  }
-
-  initMouseListeners() {
-    const elHover = document.querySelectorAll(".list-vigneron");
-
-    elHover.forEach(function (el) {
-      el.addEventListener("mouseenter", function (e) {
-        // console.log(e);
-        e.target.parentNode
-          .querySelectorAll(".list-vigneron")
-          .forEach(function (el) {
-            el.classList.remove("active-nom");
-          });
-        var elem = e.target;
-        console.log(elem.classList);
-        if (elem.classList.contains("list-vigneron")) {
-          console.log("hover list-vigneron");
-          elem.classList.toggle("active-nom");
-        }
-      });
-    });
-  }
-
   render() {
     const { data, regionData } = this.props;
-
+    console.log(data);
     return (
       <>
         <section id="vignerons">
-          <h2>{data.region}</h2>
+          <h2>{data.title}</h2>
           {Object.keys(regionData).map((region) =>
             this.getRegion(region, regionData)
           )}

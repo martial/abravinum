@@ -368,7 +368,7 @@ main{
 #vignerons{
 	display: flex;
 	flex-direction: column;
-	max-width: 900px;
+	max-width: 1000px;
 	margin: 200px auto; 
 	padding: 0 20px;
 }
@@ -416,7 +416,8 @@ main{
 	position: absolute;
 	left: 0;
 	margin: 15px 5px;
-	max-width: 85%;
+	max-width: 500px;
+	width: 80%;
 	min-width: 350px;
 	opacity: 0;
 	visibility: hidden;
@@ -468,7 +469,7 @@ main{
 /***********/
 
 #contact{
-	max-width: 900px;
+	max-width: 1000px;
 	margin: 200px auto 150px auto;
 	padding: 0 20px;
 }
