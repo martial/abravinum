@@ -1,9 +1,10 @@
 import { Component } from "preact";
+import ReactHTMLConverter from "react-html-converter/browser";
 
 export default class Vignerons extends Component {
   constructor() {
     super();
-
+    this.converter = new ReactHTMLConverter();
     this.marginBtDomain = 100;
   }
 
@@ -35,7 +36,11 @@ export default class Vignerons extends Component {
           </div>
 
           <div class="txt-vigneron">
-            <p>{vineyard.headline}</p>
+            <p>
+              {this.converter.convert(
+                vineyard.headline.replace(/\n/g, "<br />")
+              )}
+            </p>
           </div>
         </div>
       </>
@@ -103,7 +108,7 @@ export default class Vignerons extends Component {
     return (
       <>
         <section id="vignerons">
-          <h2>{data.region}</h2>
+          <h2>{data.title}</h2>
           {Object.keys(regionData).map((region) =>
             this.getRegion(region, regionData)
           )}
