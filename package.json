@@ -9,7 +9,6 @@
   "dependencies": {
     "axios": "^0.21.1",
     "preact": "^10.5.9",
-    "react-html-converter": "^0.3.2",
     "rellax": "^1.12.1"
   },
   "devDependencies": {

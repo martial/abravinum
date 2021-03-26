@@ -41,7 +41,23 @@ export class App extends Component {
       formatedResult[vigneron.region].push(vigneron);
     });
 
-    return formatedResult;
+    for (const [key, value] of Object.entries(formatedResult)) {
+      value.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    const sorted = Object.keys(formatedResult)
+      .sort()
+      .reduce(
+        (acc, key) => ({
+          ...acc,
+          [key]: formatedResult[key],
+        }),
+        {}
+      );
+
+    return sorted;
   }
 
   onDataLoadedHandler() {
@@ -55,10 +71,8 @@ export class App extends Component {
   render() {
     const { data } = this.state;
     const loading = !data;
-    console.log(data);
 
     const regionData = this.state.regionData;
-    console.log(regionData);
 
     if (!loading) {
       setTimeout(function endLoad() {

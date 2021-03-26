@@ -23,17 +23,14 @@ export default class Vignerons extends Component {
 
   handleSizes() {
     const domaines = document.querySelectorAll(".domaine-section");
-    console.log(domaines);
     domaines.forEach((el) => {
       //marginBot for each domaine
       let activeP;
       el.querySelectorAll(".list-vigneron").forEach(function (el) {
         if (el.classList.contains("active-nom")) {
-          console.log(el);
           activeP = el;
         }
       });
-      console.log(activeP.querySelector(".txt-vigneron"));
 
       const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
 
