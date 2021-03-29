@@ -5,6 +5,7 @@ import About from "./components/About";
 import Header from "./components/Header";
 import Vignerons from "./components/Vignerons";
 import Contact from "./components/Contact";
+import "./components/Loading.css";
 
 export class App extends Component {
   constructor() {

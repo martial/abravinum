@@ -1,6 +1,5 @@
 function Contact(props) {
   const data = props.data;
-  // const allTitle = data.Main;
   return (
     <>
       <section id="contact">
@@ -15,6 +14,23 @@ function Contact(props) {
           </p>
         </div>
       </section>
+
+      <footer>
+        <div class="reseaux">
+          <a href="">
+            <span>Facebook</span>
+          </a>
+          <a href="">
+            <span>Twitter</span>
+          </a>
+          <a href="">
+            <span>Instagram</span>
+          </a>
+        </div>
+        <div class="retour-top scroll-link">
+          <a href="#home">Retour</a>
+        </div>
+      </footer>
     </>
   );
 }

@@ -41,7 +41,7 @@ function Header(props) {
             <h1>Ab</h1>
             <h1>A</h1>
           </div>
-          <div class="container-polyedre container-polyedre-home">
+          <div class="container-poly container-polyedre container-polyedre-home">
             <img src="static/polyedre-1.png" alt="" />
           </div>
         </div>

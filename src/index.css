@@ -1,247 +1,277 @@
 
-
 /*************************/
 /* stylesheet de timothé */
 /*************************/
-
-/*********/
-/* FONTS */
-/*********/
-
-
-/* Playfair */
-
-@font-face {
-	font-family: "Playfair";
-	src: url("/static/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
-font-style: italic;
-}
-@font-face {
-	font-family: "Playfair";
-	src: url("/static/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
-font-weight: 400 900;
-}
-
-/* Lato */
-
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-BlackItalic.ttf") format("truetype");
-font-style: italic;
-font-weight: 600;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-BoldItalic.ttf") format("truetype");
-font-style: italic;
-font-weight: 500;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-Italic.ttf") format("truetype");
-font-style: italic;
-	font-weight: 400;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-LightItalic.ttf") format("truetype");
-font-style: italic;
-font-weight: 300;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-ThinItalic.ttf") format("truetype");
-font-style: italic;
-font-weight: 200;
-}
-
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-Black.ttf") format("truetype");
-font-weight: 600;
-	font-style: normal;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-Bold.ttf") format("truetype");
-font-weight: 500;
-	font-style: normal;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-Regular.ttf") format("truetype");
-font-weight: 400;
-	font-style: normal;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-Light.ttf") format("truetype");
-font-weight: 300;
-	font-style: normal;
-}
-@font-face {
-	font-family: "Lato";
-	src: url("/static/fonts/Lato-Thin.ttf") format("truetype");
-font-weight: 200;
-	font-style: normal;
-}
-@font-face {
-	font-family: "Baskerville";
-	src: url("/static/BASKVILL.ttf") format("truetype");
-	font-style: normal;
-}
-
 
 
 /*************/
 /* VARIABLES */
 /*************/
 :root{
-	--dark-color: #222222;
-	--light-color: #FCFCF7;
+    --dark-color: #222222;
+    --light-color: #FCFCF7;
 
-	--primary-color: #ab743e;
-	--second-color: #e1bf8f;
-	--third-color: #f8f1e9;
+    --primary-color: #ab743e;
+    --second-color: #e1bf8f;
+    --third-color: #f8f1e9;
 
-	--width-default: 1px;
-	--border-: solid var(--dark-color) var(--width-default);
+    --width-default: 1px;
+    --border-: solid var(--dark-color) var(--width-default);
 
-	--h1-size: 2.5em;
+    --h1-size: 2.5em;
+    --left-border : -25px;
+    --white-bg: rgba(255, 255, 255, 0.418);
 }
 
 *::selection{
-	color: var(--light-color);
-	background-color: var(--primary-color);
-	-webkit-text-fill-color: var(--light-color);
-	-webkit-text-stroke-width: 0px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    -webkit-text-fill-color: var(--light-color);
+    -webkit-text-stroke-width: 0px;
 }
 *::-moz-selection{
-	color: var(--light-color);
-	background-color: var(--primary-color);
-	-webkit-text-fill-color: var(--light-color);
-	-webkit-text-stroke-width: 0px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    -webkit-text-fill-color: var(--light-color);
+    -webkit-text-stroke-width: 0px;
 }
+
+
+
+/* Playfair */
+
+@font-face {
+    font-family: "Playfair";
+    src: url("../static/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+	font-style: italic;
+}
+@font-face {
+    font-family: "Playfair";
+    src: url("../static/fonts/PlayfairDisplay-VariableFont_wght.ttf") format("truetype");
+	font-weight: 400 900;
+}
+
+/* Lato */
+
+
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-BlackItalic.ttf") format("truetype");
+	font-style: italic;
+	font-weight: 600;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-BoldItalic.ttf") format("truetype");
+	font-style: italic;
+	font-weight: 500;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-Italic.ttf") format("truetype");
+	font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-LightItalic.ttf") format("truetype");
+	font-style: italic;
+	font-weight: 300;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-ThinItalic.ttf") format("truetype");
+	font-style: italic;
+	font-weight: 200;
+}
+
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-Black.ttf") format("truetype");
+	font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-Bold.ttf") format("truetype");
+	font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-Regular.ttf") format("truetype");
+	font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-Light.ttf") format("truetype");
+	font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Lato";
+    src: url("../static/fonts/Lato-Thin.ttf") format("truetype");
+	font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Baskerville";
+    src: url("../static/BASKVILL.ttf") format("truetype");
+    font-style: normal;
+}
+
+
+
 
 /***********/
 /* COMMUNS */
 /***********/
 *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body{
-	background-color: var(--light-color);
-	color: var(--dark-color);
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    overflow-x: hidden;
 }
 h1{
-	font-family: "Baskerville", serif;
-	text-transform: uppercase;
+    font-family: "Baskerville", serif;
+    text-transform: uppercase;
 }
 h2{
-	font-family: "Baskerville", serif;
-	font-size: calc(6vw + 1.5em);
+    font-family: "Baskerville", serif;
+    font-size: 4em;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 h3{
-	font-family: "Playfair", serif;
-	font-weight: 400;
+    font-family: "Playfair", serif;
+    font-weight: 400;
 }
 h4{
-	font-family: "Baskerville", serif;
-	font-size: 2.3em;
-	font-weight: 400;
-	text-transform: uppercase;
+    font-family: "Baskerville", serif;
+    font-size: 2.3em;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 h5{
-	font-family: "Baskerville", serif;
-	font-weight: 400;
-	font-size: 1.4em;
+    font-family: "Lato", serif;
+    font-weight: 400;
+    font-size: 1em;
 }
 p{
-	font-family: "Lato", sans-serif;
-	font-size: 0.9em;
-	font-style: italic;
+    font-family: "Lato", sans-serif;
+    font-size: 0.8em;
+    /* font-style: italic; */
+    color: #383737;
 }
 a{
-	text-decoration: none;
-	color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 li{
-	list-style: none;
+    list-style: none;
 }
 .container-polyedre{
-	pointer-events: none;
-	opacity: 0.2;
-	z-index: -1;
+    pointer-events: none;
+    z-index: -1;
+}
+.container-polyedre img{
+    opacity: 0.2;
+
 }
 
+/* select */
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    padding: 3px 5px;
+    border: 1px solid var(--dark-color);
+    border-radius: 0;
+    position: relative;
+    border-right-width: 20px;
+    background-color: transparent;
+    color: var(--dark-color);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  select:focus {
+    outline: none;
+    border-color: var(--dark-color);
+  }
+  label {
+    position: relative;
+    display: inline-block;
+  }
+  label:after {
+    display: block;
+    content: "▾";
+    font-size: 20px;
+    width: 20px;
+    position: absolute;
+    height: 20px;
+    top: 50%;
+    margin-top: -14px;
+    right: -1px;
+    color: #fff;
+    pointer-events: none;
+  }
+  
 /***********/
-/* loading */
+/* polyedre img */
 /***********/
-#loading{
-	position: fixed;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100vw;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	background-color: var(--second-color);
-	transition: transform 500ms ease-in-out;
-	z-index: 100;
+.container-poly{
+    position: absolute;
 }
-#loading .container-loading{
-	position: absolute;
-	width: 150px;
-	z-index: 0;
-	animation: loading-animation 1500ms infinite alternate ease-out;
+.container-poly img{
+    width: 100%;
+    opacity: 0.1;
 }
-#loading span{
-	font-family: 'Baskerville', serif;
+.container-poly-1{
+    width: 300px;
+    left: 85%;
 }
-@keyframes loading-animation{
-	0%{
-		transform: rotate(0deg);
-	}
-	100%{
-		transform: rotate(180deg);
-	}
+.container-poly-2{
+    width: 300px;
 }
-#loading.anim-load{
-	transform: translateY(-100%);
+.container-poly-3{
+    width: 400px;
+    left: 70%;
 }
-
 /***********/
 /* header */
 /***********/
 body{
-	background: white;
+    background: white;
 }
 #paper-texture{
-	position: fixed;
-	z-index: -1;
-	width: 100vw;
-	height: 100vh;
-	background-image: url('../static/texture-paper.png');
-	/* background-color: white; */
-	background-size: cover; 
-	opacity: 0.3;
-	background-repeat: no-repeat;
-	/* background-blend-mode: overlay; */
-	pointer-events: none;
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../static/texture-paper.png');
+    /* background-color: white; */
+    background-size: cover; 
+    opacity: 0.5;
+    background-repeat: no-repeat;
+    /* background-blend-mode: overlay; */
+    pointer-events: none;
 }
 #map-texture{
-	position: fixed;
-	z-index: -3;
-	width: 100vw;
-	height: 100vh;
-	background-image: url('../static/texture-map.png');
-	background-size: cover;
-	opacity: 0.1;
-	background-repeat: no-repeat;
-	pointer-events: none;
+    position: fixed;
+    z-index: -3;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../static/texture-map.png');
+    background-size: cover;
+    opacity: 0.1;
+    background-repeat: no-repeat;
+    pointer-events: none;
 
 }
 
@@ -249,333 +279,338 @@ body{
 /* header */
 /***********/
 header{
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 }
 .container-logo{
-	position: relative;
-	height: calc( var(--h1-size) + 1em);
-	overflow: hidden;
-	transition: height 1s ease-in-out;
-	padding-top: 1em;
-	cursor: pointer;
+    position: relative;
+    height: calc( var(--h1-size) + 1em);
+    overflow: hidden;
+    transition: height 1s ease-in-out;
+    padding-top: 1em;
+    cursor: pointer;
 }
 
 header:hover .container-logo{
-	height: calc( var(--h1-size) * 10 + 2em );
+    height: calc( var(--h1-size) * 10 + 2em );
 }
 .container-logo::before{
-	content: '';
-	position: absolute;
-	width: 60%;
-	left: 50%;
-	top: 0;
-	height: 3px;
-	background-color: #222222;
-	transform: translateX(-50%);
+    content: '';
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    top: 0;
+    height: 3px;
+    background-color: #222222;
+    transform: translateX(-50%);
 }
 header h1{
-	font-size: var(--h1-size);
-	letter-spacing: 20px;
-	text-align: center;
+    font-size: var(--h1-size);
+    letter-spacing: 20px;
+    text-align: center;
 }
 nav{
-	position: absolute;
-	/* z-index: -2; */
-	right: 50px;
-}
-nav ul a:nth-child(odd){
-	position: relative;
-	left: -30px;
+    position: absolute;
+    right: 50px;
 }
 nav li{
-	font-family: 'Baskerville', serif;
-	font-size: 1.4em;
-	margin: 15px 0;
+    font-family: 'Baskerville', serif;
+    font-size: 1.4em;
+    margin: 15px 0;
 }
 .content-home{
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container-polyedre-home{
-	position: absolute;
-	max-width: 500px;
-	width: 50vw;
-	min-width: 200px;
+    position: absolute;
+    max-width: 500px;
+    width: 50vw;
+    min-width: 200px;
 }
 .container-polyedre img{
-	width: 100%;
+    width: 100%;
+}
+.container-section{
+    margin: 0 auto;
+    padding: 0 100px;
+    max-width: 900px;
+}
+.container-img img{
+    width: 100%;
 }
 
-
-main{
-	width: 100%;
-	overflow-x: hidden;
-}
 /***********/
 /* a propos */
 /***********/
-
 #infos{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	height: 100vh;
-	margin-top: 100px;
+    position: relative;
+    background-color: var(--white-bg);
+    height: 100vh;
+}
+#infos .container-section{
+    padding: 150px 0 100px 0;
 }
 .content-apropos{
-	position: relative;
-	flex: 1;
-	min-width: 350px;
-	width: 50%;
-	margin-top: 100px;
-	padding: 0 30px 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
 }
-.content-apropos h3{
-	margin: 30px 0;
+.apropos-right{
+    width: 400px;
 }
-.content-apropos p{
-	width: 70%;
+.apropos-right h3{
+    margin-bottom: 30px;
 }
-.container-polyedre-apropos{
-	position: absolute;
-	bottom: -300px;
-	width: 300px;
-}
-.container-polyedre-apropos img{
-	transform: rotate(-95deg);
-}
-#container-apropos-img{
-	flex:1;
-	background-image: url('../static/background-info.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	z-index: -2;
-	min-width: 400px;
-	min-height: 30vh;
+.container-img.img-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    overflow: hidden;
 }
 
 /***********/
-/* vignerons */
+/* Vignerons */
 /***********/
 
 #vignerons{
-	display: flex;
-	flex-direction: column;
-	max-width: 1000px;
-	margin: 200px auto; 
-	padding: 0 20px;
+    position: relative;
+    margin: 300px 0 200px 0;
 }
-#vignerons h2 {
-	text-align: right;
-	margin-bottom: 100px;
+.vigneron-saison{
+    margin: 0 auto;
+    max-width: 900px;
+}
+.vigneron-saison p{
+    font-size: 1.2em;
+    margin: 0px 0 5px 0;
+}
+/* Champagne */
+#champagne{
+    position: relative;
+    margin-top: 200px;
 }
 .domaine-section{
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	width: 80%;
-	transition: margin 300ms ease-in-out;
+    position: relative;
+    z-index: 0;
+    margin-top: 75px;
 }
-.domaine-section:nth-child(odd){
-	/* align-items: flex-end; */
-	align-self: flex-end;
+.domaine-section-champagne .container-domaine{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
 }
-.domaine-section:nth-child(odd) h4{
-	text-align: right;
+.container-content{
+    position: relative;
+    min-width: 300px;
+    width: 50%;
+    max-width: 650px;
+    margin-left: calc(var(--left-border) * -1);
+    /* margin-bottom: 60px; */
 }
-.domaine-section:nth-child(odd) .container-list {
-	justify-content: flex-end;
+.container-content::before{
+    content: '';
+    position: absolute;
+    left: var(--left-border);
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: black;
 }
-.domaine-section:nth-child(odd) .txt-vigneron {
-	left: inherit;
-	right: 0;
-	text-align: right;
+#champagne .domaine-img{
+    position: absolute;
+    top: -100px;
+    right: 0px;
+    width: 400px;
+    z-index: 2;
 }
-.container-list{
-	display: flex;
-	flex-wrap: wrap;
-	position: relative;
-	margin: 25px 0;
+
+/* bourgogne */
+#bourgogne{
+    margin-top: 140px;
+    background-color: var(--white-bg);
 }
-.list-vigneron{
-	margin: 5px;
+#bourgogne .container-domaine{
+    display: flex;
+    justify-content: flex-end;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 250px 0 100px 0;
 }
-.nom-vigneron{
-	padding: 4px 15px;
-	border: black 1px solid;
-	cursor: pointer;
+#bourgogne .container-content {
+    transform: translateX(100px);
+}
+.domaine-section-bourgogne .nom-vigneron{
+    transform: translateX(calc(-100% - var(--left-border) * -2));
+    margin: 3px 0;
+}
+.domaine-section-bourgogne .nom-vigneron h5{
+    text-align: right;
+}
+.domaine-section-bourgogne .txt-vigneron{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.domaine-section-bourgogne .container-list{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
 }
 .txt-vigneron{
-	position: absolute;
-	left: 0;
-	margin: 15px 5px;
-	max-width: 500px;
-	width: 80%;
-	min-width: 350px;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 150ms ease-in-out;
+    opacity: 0;
 }
-.txt-vigneron p {
-	line-height: 1.4em;
+.nom-vigneron h5:hover {
+    font-weight: 600;
+    cursor: pointer;
 }
-.active-nom .nom-vigneron{
-	background-color: black!important;
-	color: white;
+.active-vignerons h5{
+    font-weight: 600;
 }
-.active-nom .txt-vigneron{
-	opacity: 1!important;
-	visibility: visible!important;
+.active-vignerons .txt-vigneron{
+    opacity: 1;
 }
-.container-polyedre-champagne{
-	position: absolute;
-	width: 300px;
-	bottom: -600px;
-	right: -300px;
-	transform: translate(150%, 80%);
+#bourgogne .domaine-img{
+    position: absolute;
+    left: 0;
+    top: 250px;
+    width: 400px;
 }
-.container-polyedre-rhone{
-	position: absolute;
-	width: 300px;
-	top: 300px;
-	left: -200px;
-	transform: translate(-50%, -80%);
+#bourgogne .domaine-img img{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 300ms ease-in-out;
 }
-
-/***********/
-/* map */
-/***********/
-
-#map{
-	position: relative;
-	z-index: -2;
-	width: 100%;
-	height: 40vh;
-	background-image: url('../static/texture-map.png');
-	background-attachment: fixed;
-	background-size: cover;
+#bourgogne .domaine-img img.active-img{
+    opacity: 1;
+    visibility: visible;
 }
 
 
+/* Rhone */
+
+#rhone{
+    position: relative;
+    margin-top: 200px;
+}
+#rhone .container-domaine{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 900px;
+    align-items: center;
+}
+#rhone .domaine-img{
+    width: 400px;
+}
+#rhone .domaine-img{
+    width: 350px;
+}
+.nom-vigneron{
+    margin: 15px 0;
+}
+/* Jura */
+#jura{
+    margin-top: 150px;
+    padding: 150px 0 0 0;
+    background-color: var(--white-bg);
+}
+#jura .container-domaine{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 900px;
+}
+#jura .domaine-img{
+    width: 100%;
+}
+#jura .container-img{
+    top: 75px;
+position: relative;
+}
 /***********/
 /* contact */
 /***********/
 
 #contact{
-	max-width: 1000px;
-	margin: 200px auto 150px auto;
-	padding: 0 20px;
+    position: relative;
+    max-width: 900px;
+    margin: 300px auto 150px auto;
+    padding: 0 20px;
+}
+#contact h2{
+    text-align: center;
 }
 .content-contact{
-	max-width: 400px;
-	margin: 100px auto;
-	text-align: center;
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
 }
 .content-contact h5{
-	margin-bottom: 50px;
-	line-height: 1.3em;
+    font-family: 'Baskerville';
+    font-size: 1.4em;
+    margin-bottom: 50px;
+    line-height: 1.3em;
 }
 .content-contact p{
-	position: relative;
-	font-family: "Baskerville", serif;
-	margin-bottom: 50px;
-	font-size: 1em;
+    position: relative;
+    font-family: "Baskerville", serif;
+    margin-bottom: 50px;
+    font-size: 1em;
 }
 .content-contact p:last-child:before{
-	position: absolute;
-	content: '';
-	z-index: -2;
-	width: 74px;
-	height: 18px;
-	top: 0;
-	left: 50%;
-	background-image: url('../static/tilde-contact.png');
-	transform: translate(-50%, calc(-50% - 25px)) scale(0.6);
-	background-repeat: none;
+    position: absolute;
+    content: '';
+    z-index: -2;
+    width: 74px;
+    height: 18px;
+    top: 0;
+    left: 50%;
+    background-image: url('../static/tilde-contact.png');
+    transform: translate(-50%, calc(-50% - 25px)) scale(0.6);
+    background-repeat: none;
 }
 .content-contact p span{
-	display: block;
-	font-size: 1.5em;
+    display: block;
+    font-size: 1.5em;
 }
 .reseaux{
-	flex: 1;
-	min-width: 250px;
+    flex: 1;
+    min-width: 250px;
 }
 .reseaux a{
-	margin-right: 10px;
+    margin-right: 10px;
 }
 .retour-top{
-	margin: 0 auto;
+    margin: 0 auto;
 }
 /***********/
 /* footer */
 /***********/
 footer{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	background-color: rgba(0, 0, 0, 0.11);
-	padding: 50px 10vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0);
+    padding: 20px 10vw;
 }
-
-
-/***********/
-/* responsive */
-/***********/
-@media screen and (max-width: 640px) {
-	:root{
-			--h1-size: 1.3em;
-	}
-	header h1{
-			white-space: nowrap;
-	}
-	nav {
-			position: fixed;
-			bottom: 0;
-			right: inherit;
-			left: inherit;
-			z-index: 10;
-			width: 100%;
-			background-color: rgba(0, 0, 0, 0.7);
-	}
-	nav ul{
-			display: flex;
-			justify-content: space-around;
-	}
-	nav ul a:nth-child(2n+1){
-			left: inherit;
-	}
-	nav ul li{
-			color: white;
-	}
-	.content-apropos{
-			padding: 0 30px;
-			margin: 0 0 80px 0;
-	}
-	.domaine-section{
-			width: 100%;
-	}
-	.list-vigneron {
-			margin: 2px;
-	}
-	.nom-vigneron h5{
-			font-size: 1.1em;
-	}
-	.txt-vigneron{
-			width: 100%;
-			min-width: 300px;
-	}
-	#map{
-			height: 65vh;
-	}
-	footer{
-			margin-bottom: 55px;
-	}
+footer a{
+    color: rgb(211, 200, 200);
 }
