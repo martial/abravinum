@@ -3,21 +3,69 @@ import { Component } from "preact";
 export default class Vignerons extends Component {
   constructor() {
     super();
-
-    this.marginBtDomain = 100;
   }
 
   componentDidMount() {
+    this.vineyardSelected();
     this.handleSizes();
     this.initMouseListeners();
+    window.addEventListener("resize", () => {
+      this.handleSizes();
+    });
   }
 
-  getRegion(region, regionData, index) {
-    const rdm = Math.ceil(Math.random() * 3);
-    const imgUrl = "static/polyedre-" + rdm + ".png";
-    const isOdd = index % 2 == 0;
-    const style = !isOdd ? "right:0" : "";
-    const speed = 0.5 + Math.random() * 1.0;
+  //js d'event
+  vineyardSelected() {
+    document.querySelectorAll(".container-list").forEach(function (el) {
+      el.children[0].classList.add("active-nom");
+    });
+  }
+
+  handleSizes() {
+    const domaines = document.querySelectorAll(".domaine-section");
+    domaines.forEach((el) => {
+      //marginBot for each domaine
+      let activeP;
+      el.querySelectorAll(".list-vigneron").forEach(function (el) {
+        if (el.classList.contains("active-nom")) {
+          activeP = el;
+        }
+      });
+
+      const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
+
+      el.style.marginBottom = heightPara + 75 + "px";
+      //Store height of container list element
+      var heightList = el.querySelector(".container-list").offsetHeight;
+
+      //for each txt set top to height to container list
+      el.querySelectorAll(".txt-vigneron").forEach(function (el) {
+        el.style.top = heightList + "px";
+      });
+    });
+  }
+
+  initMouseListeners() {
+    const elHover = document.querySelectorAll(".list-vigneron");
+
+    elHover.forEach(function (el) {
+      el.addEventListener("mouseenter", function (e) {
+        e.target.parentNode
+          .querySelectorAll(".list-vigneron")
+          .forEach(function (el) {
+            el.classList.remove("active-nom");
+          });
+        var elem = e.target;
+        console.log(elem.classList);
+        if (elem.classList.contains("list-vigneron")) {
+          elem.classList.toggle("active-nom");
+        }
+      });
+    });
+  }
+
+  //display content
+  getRegion(region, regionData) {
     return (
       <div class="domaine-section">
         <div class="nom-domaine">
@@ -25,13 +73,6 @@ export default class Vignerons extends Component {
         </div>
         <div class="container-list">
           {regionData[region].map((vineyard) => this.getVineyard(vineyard))}
-        </div>
-        <div
-          class="container-polyedre para container-polyedre-apropos"
-          data-rellax-speed={speed}
-          style={style}
-        >
-          <img src={imgUrl} alt="" />
         </div>
       </div>
     );
@@ -56,65 +97,70 @@ export default class Vignerons extends Component {
     );
   }
 
-  handleSizes() {
-    document.querySelectorAll(".container-list").forEach(function (el) {
-      el.children[0].classList.add("active-nom");
-    });
-
-    const domaines = document.querySelectorAll(".domaine-section");
-    domaines.forEach((el) => {
-      //marginBot for each domaine
-      let activeP;
-      el.querySelectorAll(".list-vigneron").forEach(function (el) {
-        if (el.classList.contains("active-nom")) {
-          activeP = el;
-        }
-      });
-
-      const heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
-      el.style.marginBottom = heightPara + 140 + "px";
-
-      //Store height of container list element
-      var heightList = el.querySelector(".container-list").offsetHeight;
-
-      //for each txt set top to height to container list
-      el.querySelectorAll(".txt-vigneron").forEach(function (el) {
-        el.style.top = heightList + "px";
-      });
-    });
-  }
-
-  initMouseListeners() {
-    const elHover = document.querySelectorAll(".list-vigneron");
-
-    elHover.forEach(function (el) {
-      el.addEventListener("click", function (e) {
-        this.parentNode
-          .querySelectorAll(".list-vigneron")
-          .forEach(function (el) {
-            el.classList.remove("active-nom");
-          });
-        var elem = this;
-
-        if (elem.classList.contains("list-vigneron")) {
-          elem.classList.toggle("active-nom");
-        }
-      });
-    });
-  }
-
   render() {
     const { data, regionData } = this.props;
-
+    console.log(data);
     return (
       <>
         <section id="vignerons">
-          <h2>Nos références</h2>
-          {Object.keys(regionData).map((region, index) =>
-            this.getRegion(region, regionData, index)
+          <h2>{data.title}</h2>
+          {Object.keys(regionData).map((region) =>
+            this.getRegion(region, regionData)
           )}
         </section>
       </>
     );
   }
 }
+
+/*
+function Vignerons(props) {
+  const data = props.data;
+  const regionData = props.regionData;
+
+  const getElement = (vignobles) => {
+    {
+      console.log({ vignobles });
+    }
+    return (
+      <>
+        <div class="list-vigneron">
+          <div class="nom-vigneron">
+            <h5>{vignobles.name}</h5>
+          </div>
+        </div>
+        <div class="txt-vigneron">
+          <p>{vignobles.headline}</p>
+        </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      <section id="vignerons">
+        <h2>{data.title}</h2>
+        {Object.keys(regionData).map(function (domaines, keyIndex) {
+          {
+            console.log(regionData[domaines]);
+          }
+          return (
+            <div class="domaine-section">
+              <div class="nom-domaine">
+                <h4>{domaines}</h4>
+              </div>
+
+              <div class="container-list">
+                {regionData[domaines].map((item) => getElement(item))}
+              </div>
+            </div>
+          );
+        })}
+      </section>
+    </>
+  );
+}
+
+export default Vignerons;
+
+*/
