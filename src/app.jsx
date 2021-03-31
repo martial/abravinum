@@ -10,6 +10,7 @@ export class App extends Component {
   constructor() {
     super();
     this.state = {
+      tempPage: false,
       data: null,
       regionData: null,
     };
@@ -21,7 +22,7 @@ export class App extends Component {
 
   async getData() {
     const url =
-      "https://script.google.com/macros/s/AKfycbzDzIKo2XL4LngTthubZd6akG5Dq0_ua7lUlj-4hlnqMUFzGc23tYwwOkWkIPDAF7sjNQ/exec";
+      "https://script.google.com/macros/s/AKfycbz_wf-eY9ttJoi7CYmlAuIevdUdSPXhr3dC5fFB6yYSUnFqL31r-Fpw3AfM5D0hNXXuPw/exec";
     const rest = await axios.get(url);
     this.setState(
       { data: rest.data, regionData: this.formatData(rest.data) },
@@ -32,7 +33,6 @@ export class App extends Component {
   }
 
   formatData(data) {
-    // console.log(data);
     let formatedResult = {};
     data.Regions.forEach((vigneron, index) => {
       if (!formatedResult[vigneron.region]) {
@@ -62,6 +62,7 @@ export class App extends Component {
 
   onDataLoadedHandler() {
     this.setParralax();
+    document.querySelector("#loading").classList.add("anim-load");
   }
 
   setParralax() {
@@ -73,12 +74,6 @@ export class App extends Component {
     const loading = !data;
 
     const regionData = this.state.regionData;
-
-    if (!loading) {
-      setTimeout(function endLoad() {
-        document.querySelector("#loading").classList.add("anim-load");
-      }, 500);
-    }
 
     return (
       <>
@@ -95,22 +90,18 @@ export class App extends Component {
             <div id="paper-texture"></div>
             <div id="map-texture"></div>
 
-            <Header data={data.Main}></Header>
-
-            <main>
-              <About data={data.Main[0]}></About>
-
-              {/* TODO Faire un component pour les vigerons */}
-              <Vignerons
-                data={data.Main[1]}
-                regionData={regionData}
-              ></Vignerons>
-
-              <section id="map"></section>
-
-              {/* TODO Faire un component pour les contacts */}
-              <Contact data={data.Main[2]}></Contact>
-            </main>
+            <Header data={data.Main} showMenu={!this.state.tempPage}></Header>
+            {!this.state.tempPage && (
+              <main>
+                <About data={data.Main[0]}></About>
+                <Vignerons
+                  data={data.Main[1]}
+                  regionData={regionData}
+                ></Vignerons>
+                <section id="map"></section>
+                <Contact data={data.Main[2]}></Contact>
+              </main>
+            )}
           </>
         )}
       </>

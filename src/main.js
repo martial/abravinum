@@ -27,7 +27,6 @@ function initHeightVignerons(){
 		var heightPara = activeP.querySelector(".txt-vigneron").offsetHeight;
 		// console.log(heightPara);
 		el.style.marginBottom = heightPara + marginBtDomain +"px";
-
 		//Store height of container list element
 		heightList = el.querySelector(".container-list").offsetHeight;
 

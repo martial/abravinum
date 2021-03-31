@@ -5,6 +5,7 @@ function Contact(props) {
     <>
       <section id="contact">
         <h2 id="section3">{data.title}</h2>
+
         <div class="content-contact">
           <h5>{data.headline}</h5>
           <p>

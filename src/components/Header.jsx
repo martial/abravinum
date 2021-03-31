@@ -1,33 +1,32 @@
 import "./Header.css";
 
 function Header(props) {
-  const data = props.data;
+  const { data, showMenu } = props;
 
   return (
     <>
       <header id="home">
-        <nav>
-          <ul class="scroll-link">
-            {/* {data.map(sections => {
+        {showMenu && (
+          <nav>
+            <ul class="scroll-link">
+              {/* {data.map(sections => {
                 // console.log(sections, sections.title);
                 return <a href= {"#" + sections.title.split(' ').join('')} >
                   <li>{sections.title}</li>
                 </a>
             })} */}
-            <a href="#infos">
-              <li>À propos</li>
-            </a>
-            <a href="#vignerons">
-              <li>Vignerons</li>
-            </a>
-            <a href="#map">
-              <li>Carte</li>
-            </a>
-            <a href="#contact">
-              <li>Contact</li>
-            </a>
-          </ul>
-        </nav>
+              <a href="#infos">
+                <li>À propos</li>
+              </a>
+              <a href="#vignerons">
+                <li>Vignerons</li>
+              </a>
+              <a href="#contact">
+                <li>Contact</li>
+              </a>
+            </ul>
+          </nav>
+        )}
 
         <div class="content-home">
           <div class="container-logo">
