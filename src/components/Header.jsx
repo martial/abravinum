@@ -20,9 +20,6 @@ function Header(props) {
             <a href="#vignerons">
               <li>Vignerons</li>
             </a>
-            <a href="#map">
-              <li>Carte</li>
-            </a>
             <a href="#contact">
               <li>Contact</li>
             </a>
