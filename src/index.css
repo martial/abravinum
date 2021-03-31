@@ -458,11 +458,14 @@ nav li{
 .domaine-section-bourgogne .nom-vigneron h5{
     text-align: right;
 }
-.domaine-section-bourgogne .txt-vigneron{
-    position: absolute;
+.domaine-section-bourgogne.multiple-vignerons .txt-vigneron{
     top: 50%;
-    left: 0;
     transform: translateY(-50%);
+}
+.multiple-vignerons .txt-vigneron{
+    position: absolute;
+    top: 100%;
+    left: 0;
 }
 .domaine-section-bourgogne .container-list{
     position: relative;
