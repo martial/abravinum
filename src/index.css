@@ -15,12 +15,11 @@
     --second-color: #e1bf8f;
     --third-color: #f8f1e9;
 
-    --width-default: 1px;
-    --border-: solid var(--dark-color) var(--width-default);
-
     --h1-size: 2.5em;
-    --left-border : -25px;
     --white-bg: rgba(255, 255, 255, 0.418);
+
+    --width-container: 950px;
+    --width-line: 3px;
 }
 
 *::selection{
@@ -337,11 +336,6 @@ nav li{
 .container-polyedre img{
     width: 100%;
 }
-.container-section{
-    margin: 0 auto;
-    padding: 0 100px;
-    max-width: 900px;
-}
 .container-img img{
     width: 100%;
 }
@@ -352,14 +346,17 @@ nav li{
 #infos{
     position: relative;
     background-color: var(--white-bg);
-    height: 100vh;
+    padding: 0 20px;
 }
 #infos .container-section{
     padding: 150px 0 100px 0;
+    margin: 0 auto;
+    max-width: var(--width-container);
 }
 .content-apropos{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 50px;
 }
@@ -377,185 +374,149 @@ nav li{
     overflow: hidden;
 }
 
+.container-domaine, .vigneron-saison{
+    padding: 0 20px;
+}
+
+/* .container-vignerons-all{
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+.container-vignerons-all section{
+    height: 100vh;
+    scroll-snap-align: start;
+} */
+
+
 /***********/
 /* Vignerons */
 /***********/
-
 #vignerons{
     position: relative;
-    margin: 300px 0 200px 0;
+    margin: 150px 0 50px 0;
 }
 .vigneron-saison{
     margin: 0 auto;
-    max-width: 900px;
+    max-width: var(--width-container);
 }
 .vigneron-saison p{
-    font-size: 1.2em;
-    margin: 0px 0 5px 0;
-}
-/* Champagne */
-#champagne{
-    position: relative;
-    margin-top: 200px;
+    font-size: 1.1em;
+    margin: 0px 0 8px 0;
 }
 .domaine-section{
     position: relative;
     z-index: 0;
-    margin-top: 75px;
+    padding: 150px 0 200px 0;
 }
-.domaine-section-champagne .container-domaine{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    max-width: 900px;
-    margin: 0 auto;
-}
-.container-content{
+.domaine-section .domaine-img{
     position: relative;
-    min-width: 300px;
-    width: 50%;
-    max-width: 650px;
-    margin-left: calc(var(--left-border) * -1);
-    /* margin-bottom: 60px; */
+    width: 300px;
+    min-height: 35vh;
 }
-.container-content::before{
-    content: '';
-    position: absolute;
-    left: var(--left-border);
-    top: 0;
-    width: 4px;
-    height: 100%;
-    background-color: black;
-}
-#champagne .domaine-img{
-    position: absolute;
-    top: -100px;
-    right: 0px;
-    width: 400px;
-    z-index: 2;
-}
-
-/* bourgogne */
-#bourgogne{
-    margin-top: 140px;
-    background-color: var(--white-bg);
-}
-#bourgogne .container-domaine{
-    display: flex;
-    justify-content: flex-end;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 250px 0 100px 0;
-}
-#bourgogne .container-content {
-    transform: translateX(100px);
-}
-.domaine-section-bourgogne .nom-vigneron{
-    transform: translateX(calc(-100% - var(--left-border) * -2));
-    margin: 3px 0;
-}
-.domaine-section-bourgogne .nom-vigneron h5{
-    text-align: right;
-}
-.domaine-section-bourgogne.multiple-vignerons .txt-vigneron{
-    top: 50%;
-    transform: translateY(-50%);
-}
-.multiple-vignerons .txt-vigneron{
-    position: absolute;
-    top: 100%;
-    left: 0;
-}
-.domaine-section-bourgogne .container-list{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-}
-.txt-vigneron{
-    opacity: 0;
-}
-.nom-vigneron h5:hover {
-    font-weight: 600;
-    cursor: pointer;
-}
-.active-vignerons h5{
-    font-weight: 600;
-}
-.active-vignerons .txt-vigneron{
-    opacity: 1;
-}
-#bourgogne .domaine-img{
-    position: absolute;
-    left: 0;
-    top: 250px;
-    width: 400px;
-}
-#bourgogne .domaine-img img{
+.domaine-section .domaine-img img{
     position: absolute;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: opacity 300ms ease-in-out;
 }
-#bourgogne .domaine-img img.active-img{
+#vignerons .domaine-section:nth-child(even){
+    background-color: var(--white-bg);
+}
+#vignerons .domaine-section:nth-child(even) .container-domaine{
+    flex-direction: row-reverse;
+}
+#vignerons .domaine-section:nth-child(even) .domaine-img{
+    margin-right: 20px;
+}
+#vignerons .domaine-section:nth-child(odd) .domaine-img{
+    margin-left: 20px;
+}
+.container-domaine{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: var(--width-container);
+    margin: 0 auto;
+}
+.unique-vigneron .container-content{
+    max-width: 450px;
+}
+.container-content{
+    position: relative;
+    flex: 1;
+    min-width: 400px;
+    max-width: 550px;
+    /* margin-left: calc(var(--left-border) * -1); */
+    margin-bottom: 20px;
+}
+.nom-domaine{
+    margin-bottom: 20px;
+}
+.unique-vigneron .container-all{
+    flex-direction: column;
+}
+.unique-vigneron .list-vigneron-name{
+    padding-left: 20px;
+    border-right: solid var(--width-line) black;
+    border-left: solid var(--width-line) black;
+    border-right: none;
+}
+.unique-vigneron .txt-vigneron{
+    top: 100%;
+    margin-top: 10px;
+}
+.unique-vigneron .container-all .nom-vigneron{
+    text-align: left;
+}
+.container-all{
+    position: relative;
+    display: flex;
+}
+.list-vigneron-name{
+    padding-right: 20px;
+    margin-right: 20px;
+    border-right: solid var(--width-line) black;
+}
+.container-all .nom-vigneron{
+    /* transform: translateX(calc(-100% - var(--left-border) * -2)); */
+    margin: 3px 0;
+    text-align: right;
+}
+.nom-vigneron{
+    cursor: pointer;
+}
+.nom-vigneron.active-vigneron h5{
+    font-weight: 600;
+}
+
+.txt-vigneron{
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+.txt-vigneron.selectTxt {
+    opacity: 1;
+}
+.domaine-section .domaine-img img.active-img{
     opacity: 1;
     visibility: visible;
 }
 
 
-/* Rhone */
 
-#rhone{
-    position: relative;
-    margin-top: 200px;
-}
-#rhone .container-domaine{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-width: 900px;
-    align-items: center;
-}
-#rhone .domaine-img{
-    width: 400px;
-}
-#rhone .domaine-img{
-    width: 350px;
-}
-.nom-vigneron{
-    margin: 15px 0;
-}
-/* Jura */
-#jura{
-    margin-top: 150px;
-    padding: 150px 0 0 0;
-    background-color: var(--white-bg);
-}
-#jura .container-domaine{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0 auto;
-    max-width: 900px;
-}
-#jura .domaine-img{
-    width: 100%;
-}
-#jura .container-img{
-    top: 75px;
-position: relative;
-}
+
+
+
 /***********/
 /* contact */
 /***********/
 
 #contact{
     position: relative;
-    max-width: 900px;
-    margin: 300px auto 150px auto;
+    max-width: var(--width-container);
+    margin: 100px auto 150px auto;
     padding: 0 20px;
 }
 #contact h2{
@@ -588,7 +549,7 @@ position: relative;
     left: 50%;
     background-image: url('../static/tilde-contact.png');
     transform: translate(-50%, calc(-50% - 25px)) scale(0.6);
-    background-repeat: none;
+    background-repeat: no-repeat;
 }
 .content-contact p span{
     display: block;
@@ -616,4 +577,73 @@ footer{
 }
 footer a{
     color: rgb(211, 200, 200);
+}
+
+
+/***********/
+/* responsive */
+/***********/
+@media screen and (max-width: 750px) {
+    :root{
+        --h1-size: 1.5em;
+    }
+    h2{
+        font-size: 3em;
+    }
+    h4{
+        font-size: 2em;
+    }
+
+    #home nav{
+        position: fixed;
+        bottom: 0;
+        right: inherit;
+        left: 0;
+        width: 100vw;
+        background-color: black;
+        color: white;
+        z-index: 100;
+    }
+    #home nav ul{
+        display: flex;
+        justify-content: space-around;
+    }
+    .domaine-section{
+        padding: 100px 0;
+    }
+    #vignerons .domaine-section:nth-child(2n) .container-domaine{
+        flex-direction: row;
+    }
+    #vignerons .domaine-section:nth-child(2n+1) .domaine-img{
+        margin-left: 0;
+    }
+    .container-content{
+        margin-bottom: 120px;
+    }
+    .container-all{
+        flex-direction: column;
+    }
+    .list-vigneron-name{
+        display: flex;
+        flex-wrap: wrap;
+        border: inherit;
+        border-left: var(--width-line) solid black;
+        padding-left: 20px;
+        margin-right: 0;
+    }
+    .list-vigneron-name .nom-vigneron{
+        margin-right: 15px;
+    }
+    .txt-vigneron{
+        top: 110%;
+    }
+  }
+
+@media screen and (max-width: 450px) {
+    :root{
+        --h1-size: 1.2em;
+    }
+    .container-domaine .container-content{
+        min-width: inherit;
+    }
 }
