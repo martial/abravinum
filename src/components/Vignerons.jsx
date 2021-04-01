@@ -8,8 +8,6 @@ export default class Vignerons extends Component {
   componentDidMount() {
     this.vineyardSelected();
     this.initMouseListeners();
-    this.getRegion();
-    this.getVigneron();
 
     window.addEventListener("scroll", (e) => {
       this.scrollRotation(e);
