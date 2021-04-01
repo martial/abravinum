@@ -5,18 +5,28 @@ import "aos/dist/aos.css";
 export default class Vignerons extends Component {
   constructor() {
     super();
-    this.season = null;
+
+    this.state = {
+      season: null,
+      seasons: [],
+    };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     this.vineyardSelected();
     this.initMouseListeners();
-
+    this.parseSeason();
     AOS.init();
 
     window.addEventListener("scroll", (e) => {
       this.scrollRotation(e);
     });
+  }
+
+  handleChange(e) {
+    this.setState({ season: e.target.value });
   }
 
   //js d'event
@@ -112,6 +122,7 @@ export default class Vignerons extends Component {
     });
   }
 
+  //js boucle DOM
   getVigneronName(vigneron) {
     // console.log(vigneron.season);
     return (
@@ -185,9 +196,31 @@ export default class Vignerons extends Component {
     );
   }
 
+  setDefaultSeason() {
+    this.setState({
+      season: this.state.seasons[this.state.seasons.length - 1],
+    });
+  }
+
+  parseSeason() {
+    const { allData } = this.props;
+
+    let saisons = [];
+    if (allData) {
+      Object.entries(allData).forEach((sheetPage) => {
+        let contentPage = sheetPage[1];
+        let firstLine = contentPage[0];
+        if (firstLine != undefined && firstLine.hasOwnProperty("saison")) {
+          saisons.push(firstLine.saison);
+        }
+      });
+    }
+    this.setState({ seasons: saisons, season: saisons[saisons.length - 1] });
+  }
+
   render() {
-    const { allData, data, regionData } = this.props;
-    console.log(allData);
+    const { data, regionData } = this.props;
+
     return (
       <>
         <section id="vignerons">
@@ -198,9 +231,14 @@ export default class Vignerons extends Component {
             <h2>{data.title}</h2>
             <p>{data.headline}</p>
             <label>
-              <select name="saison" id="saison-select">
-                {Object.keys(allData).map((sheetName) => (
-                  <option value={sheetName}>{sheetName}</option>
+              <select
+                name="saison"
+                id="saison-select"
+                value={this.state.season}
+                onChange={this.handleChange}
+              >
+                {this.state.seasons.map((listSaison) => (
+                  <option value={listSaison}>{listSaison}</option>
                 ))}
               </select>
             </label>
