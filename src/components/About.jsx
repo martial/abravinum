@@ -13,9 +13,9 @@ function About(props) {
         id="infos"
         class="section1"
         data-aos="fade-up"
-        data-aos-offset="100"
+        data-aos-offset="50"
         data-aos-delay="50"
-        data-aos-duration="800"
+        data-aos-duration="600"
       >
         <div class="container-section">
           <article class="content-apropos">

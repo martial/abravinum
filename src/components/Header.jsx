@@ -8,12 +8,6 @@ function Header(props) {
       <header id="home">
         <nav>
           <ul class="scroll-link">
-            {/* {data.map(sections => {
-                // console.log(sections, sections.title);
-                return <a href= {"#" + sections.title.split(' ').join('')} >
-                  <li>{sections.title}</li>
-                </a>
-            })} */}
             <a href="#infos">
               <li>À propos</li>
             </a>

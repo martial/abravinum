@@ -28,7 +28,7 @@ function Contact(props) {
           </a>
         </div>
         <div class="retour-top scroll-link">
-          <a href="#home">Retour</a>
+          <a href="#home">&#8593;</a>
         </div>
       </footer>
     </>

@@ -120,6 +120,9 @@
 /***********/
 /* COMMUNS */
 /***********/
+#app{
+    overflow-x: hidden;
+}
 * {
   margin: 0;
   padding: 0;
@@ -183,7 +186,7 @@ select {
   text-indent: 0.01px;
   text-overflow: "";
   padding: 3px 5px;
-  border: 1px solid var(--dark-color);
+  border: 2px solid var(--dark-color);
   border-radius: 0;
   position: relative;
   border-right-width: 20px;
@@ -213,7 +216,14 @@ label:after {
   color: #fff;
   pointer-events: none;
 }
-
+label option{
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+select option:hover, select option:focus, select option:checked{
+    color: var(--dark-color) !important;
+    background-color: red !important;
+}
 /***********/
 /* polyedre img */
 /***********/
@@ -324,6 +334,7 @@ body {
   max-width: var(--width-container);
   margin: 100px auto 150px auto;
   padding: 0 20px;
+  /* background-color: var(--white-bg); */
 }
 #contact h2 {
   text-align: center;
@@ -384,7 +395,9 @@ footer {
 footer a {
   color: rgb(211, 200, 200);
 }
-
+footer .retour-top {
+    font-size: 18px;
+}
 /***********/
 /* responsive */
 /***********/
@@ -414,7 +427,7 @@ footer a {
     justify-content: space-around;
   }
   .domaine-section {
-    padding: 100px 0;
+    padding: 75px 0 100px 0;
   }
   #vignerons .domaine-section:nth-child(2n) .container-domaine {
     flex-direction: row;
@@ -423,7 +436,7 @@ footer a {
     margin-left: 0;
   }
   .container-content {
-    margin-bottom: 120px;
+    margin-bottom: 20px;
   }
   .container-all {
     flex-direction: column;
@@ -433,11 +446,13 @@ footer a {
     flex-wrap: wrap;
     border: inherit;
     border-left: var(--width-line) solid black;
-    padding-left: 20px;
+    padding-left: 10px;
+    padding-right: 0;
     margin-right: 0;
+    margin-bottom: 20px;
   }
   .list-vigneron-name .nom-vigneron {
-    margin-right: 15px;
+    margin: 15px 20px 0 0;
   }
   .txt-vigneron {
     top: 110%;
@@ -448,7 +463,27 @@ footer a {
   :root {
     --h1-size: 1.2em;
   }
+  /* #paper-texture{
+      height: 200vh;
+  }
+  #map-texture{
+    height: 200vh;
+} */
   .container-domaine .container-content {
     min-width: inherit;
+  }
+  .vigneron-saison label, .vigneron-saison select{
+      width: 100%;
+  }
+  footer{
+      padding: 20px 30px 30px 20px;
+      margin-bottom: 50px;
+      background-color: rgba(255, 255, 255, 0.199);
+  }
+  .container-domaine .domaine-img{
+      width: 100%;
+  }
+  footer a{
+    color: black;
   }
 }

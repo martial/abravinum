@@ -21,6 +21,9 @@ header {
 header:hover .container-logo {
   height: calc(var(--h1-size) * 10 + 2em);
 }
+.active-hover-logo{
+  height: calc(var(--h1-size) * 10 + 2em);
+}
 .container-logo::before {
   content: "";
   position: absolute;

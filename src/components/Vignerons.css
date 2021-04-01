@@ -3,7 +3,7 @@
 /***********/
 #vignerons {
   position: relative;
-  margin: 150px 0 50px 0;
+  padding: 150px 0 50px 0;
 }
 .vigneron-saison {
   margin: 0 auto;
@@ -24,7 +24,7 @@
   min-height: 35vh;
 }
 .domaine-section .domaine-img img {
-  position: absolute;
+  display: none;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -84,6 +84,7 @@
   display: flex;
 }
 .list-vigneron-name {
+  min-width: 180px;
   padding-right: 20px;
   margin-right: 20px;
   border-right: solid var(--width-line) black;
@@ -101,14 +102,17 @@
 }
 
 .txt-vigneron {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   opacity: 0;
+  display: none;
 }
 .txt-vigneron.active-txt {
   opacity: 1;
+  display: block;
 }
 .domaine-section .domaine-img img.active-img {
+  display: block;
   opacity: 1;
   visibility: visible;
 }

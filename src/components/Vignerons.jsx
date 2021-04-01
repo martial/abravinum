@@ -59,14 +59,9 @@ export default class Vignerons extends Component {
     document.querySelectorAll(".list-vigneron-txt").forEach(function (el) {
       el.children[0].classList.add("selectTxt");
     });
-
     document.querySelectorAll(".domaine-img").forEach((e) => {
       e.childNodes[0].classList.add("active-img");
     });
-
-    // document.querySelectorAll(".domaine-img").childNodes.forEach(function (el) {
-    //   el.children[0].classList.add("active-img");
-    // });
   }
 
   initMouseListeners() {
@@ -78,6 +73,7 @@ export default class Vignerons extends Component {
         e.target.parentNode.parentNode.childNodes.forEach((e) => {
           e.classList.remove("active-vigneron");
         });
+
         e.target.parentNode.parentNode.parentNode
           .querySelectorAll(".list-vigneron-txt .txt-vigneron")
           .forEach((e) => {
@@ -108,40 +104,27 @@ export default class Vignerons extends Component {
         domainContainer.parentNode.parentNode
           .querySelector(".domaine-img")
           .childNodes[indexClicked].classList.toggle("active-img");
-        // if (containerImg) {
-        //   [...containerImg.children].forEach((e) => {
-        //     e.classList.remove("active-img");
-        //   });
-        //   containerImg.children[indexClicked].classList.add("active-img");
+
+        // if (window.innerWidth < 750) {
+        //   e.target.parentNode.parentNode.parentNode.parentNode.style.marginBottom =
+        //     e.target.parentNode.parentNode.parentNode.querySelectorAll(
+        //       ".list-vigneron-txt .txt-vigneron"
+        //     )[indexClicked].offsetHeight +
+        //     35 +
+        //     "px";
         // }
-
-        // // get list vignerons siblings
-        // let siblings = [];
-        // let sibling = vigneronClicked.parentNode.firstChild;
-        // while (sibling) {
-        //   if (sibling.nodeType === 1 && sibling !== e) {
-        //     siblings.push(sibling);
-        //   }
-        //   sibling = sibling.nextSibling;
-        // }
-
-        // //remove visible el
-        // siblings.forEach((e) => {
-        //   e.classList.remove("active-vignerons");
-        // });
-
-        // //add class
-        // vigneronClicked.classList.toggle("active-vignerons");
       });
     });
   }
 
   //js boucle DOM
-  getVigneronName(vigneron) {
-    // console.log(vigneron.season);
+  getVigneronName(vigneron, index) {
+    const classTxt =
+      index === 0 ? "nom-vigneron active-vigneron" : "nom-vigneron";
+
     return (
       <>
-        <div class="nom-vigneron">
+        <div className={classTxt}>
           <h5>{vigneron.name}</h5>
         </div>
       </>
@@ -177,9 +160,9 @@ export default class Vignerons extends Component {
         {/* bourgogne */}
         <article
           data-aos="fade-up"
-          data-aos-offset="100"
+          data-aos-offset="50"
           data-aos-delay="50"
-          data-aos-duration="800"
+          data-aos-duration="600"
           class={
             "domaine-section " +
             (regionData[region].length <= 1
@@ -199,8 +182,8 @@ export default class Vignerons extends Component {
 
               <div class="container-all">
                 <div class="list-vigneron-name">
-                  {regionData[region].map((vigneron) =>
-                    this.getVigneronName(vigneron)
+                  {regionData[region].map((vigneron, index) =>
+                    this.getVigneronName(vigneron, index)
                   )}
                 </div>
                 <div class="list-vigneron-txt">
@@ -250,8 +233,6 @@ export default class Vignerons extends Component {
   }
 
   formatData(data) {
-    // console.log(data);
-
     let formatedResult = {};
 
     data.forEach((vigneron, index) => {
