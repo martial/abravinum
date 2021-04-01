@@ -1,6 +1,6 @@
 import { Component } from "preact";
 import axios from "axios";
-import Rellax from "rellax";
+// import Rellax from "rellax";
 import About from "./components/About";
 import Header from "./components/Header";
 import Vignerons from "./components/Vignerons";
@@ -12,7 +12,7 @@ export class App extends Component {
     super();
     this.state = {
       data: null,
-      regionData: null,
+      season: null,
     };
   }
 
@@ -25,55 +25,28 @@ export class App extends Component {
       "https://script.google.com/macros/s/AKfycbzDzIKo2XL4LngTthubZd6akG5Dq0_ua7lUlj-4hlnqMUFzGc23tYwwOkWkIPDAF7sjNQ/exec";
     const rest = await axios.get(url);
     this.setState(
-      { data: rest.data, regionData: this.formatData(rest.data) },
+      {
+        data: rest.data,
+
+        season: rest.data,
+      },
       () => {
         this.onDataLoadedHandler();
       }
     );
   }
 
-  formatData(data) {
-    // console.log(data);
-    let formatedResult = {};
-    data.Regions.forEach((vigneron, index) => {
-      if (!formatedResult[vigneron.region]) {
-        formatedResult[vigneron.region] = [];
-      }
-      formatedResult[vigneron.region].push(vigneron);
-    });
-
-    for (const [key, value] of Object.entries(formatedResult)) {
-      value.sort(function (a, b) {
-        return a.name.localeCompare(b.name);
-      });
-    }
-
-    const sorted = Object.keys(formatedResult)
-      .sort()
-      .reduce(
-        (acc, key) => ({
-          ...acc,
-          [key]: formatedResult[key],
-        }),
-        {}
-      );
-
-    return sorted;
-  }
-
   onDataLoadedHandler() {
-    this.setParralax();
+    // this.setParralax();
   }
 
-  setParralax() {
-    new Rellax(".para");
-  }
+  // setParralax() {
+  //   new Rellax(".container-poly");
+  // }
 
   render() {
     const { data } = this.state;
     const loading = !data;
-
-    const regionData = this.state.regionData;
 
     if (!loading) {
       setTimeout(function endLoad() {
@@ -102,10 +75,7 @@ export class App extends Component {
               <About data={data.Main[0]}></About>
 
               {/* TODO Faire un component pour les vigerons */}
-              <Vignerons
-                data={data.Main[1]}
-                regionData={regionData}
-              ></Vignerons>
+              <Vignerons allData={data} data={data.Main[1]}></Vignerons>
 
               <section id="map"></section>
 

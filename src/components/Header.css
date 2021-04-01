@@ -38,13 +38,8 @@ header h1 {
 }
 nav {
   position: absolute;
-  /* z-index: -2; */
   right: 50px;
 }
-/* nav ul a:nth-child(odd) {
-  position: relative;
-  left: -30px;
-} */
 nav li {
   font-family: "Baskerville", serif;
   font-size: 1.4em;
@@ -63,5 +58,8 @@ nav li {
   min-width: 200px;
 }
 .container-polyedre img {
+  width: 100%;
+}
+.container-img img {
   width: 100%;
 }
