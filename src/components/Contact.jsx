@@ -13,6 +13,11 @@ function Contact(props) {
             E-mail : <span> abra-vinum@info.com</span>
           </p>
         </div>
+        <div class="catalogue">
+          <a href="https://www.abravinum.com/pdf/catalogue.pdf">
+            Accès au catalogue
+          </a>
+        </div>
       </section>
 
       <footer>

@@ -18,6 +18,7 @@ export class App extends Component {
 
   componentDidMount() {
     this.getData();
+    this.isMobile();
   }
 
   async getData() {
@@ -40,13 +41,25 @@ export class App extends Component {
     // this.setParralax();
   }
 
-  // setParralax() {
-  //   new Rellax(".container-poly");
-  // }
+  isMobile() {
+    window.addEventListener(
+      "resize",
+      () => {
+        this.setState({
+          isMobile: window.innerWidth < 800,
+        });
+      },
+      false
+    );
+  }
 
   render() {
     const { data } = this.state;
     const loading = !data;
+    const isMobile = this.state.isMobile
+      ? "container-logo active-hover-logo"
+      : "container-logo";
+    console.log(isMobile);
 
     if (!loading) {
       setTimeout(function endLoad() {
@@ -69,7 +82,7 @@ export class App extends Component {
             <div id="paper-texture"></div>
             <div id="map-texture"></div>
 
-            <Header data={data.Main}></Header>
+            <Header data={data.Main} isMobile={isMobile}></Header>
 
             <main>
               <About data={data.Main[0]}></About>

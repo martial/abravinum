@@ -265,8 +265,6 @@ export default class Vignerons extends Component {
     const { data } = this.props;
     const { seasons, currentSeason, formatedSeason } = this.state;
 
-    console.log(currentSeason);
-    //return <></>;
     return (
       <>
         <section id="vignerons">

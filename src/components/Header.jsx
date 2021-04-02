@@ -2,6 +2,9 @@ import "./Header.css";
 
 function Header(props) {
   const data = props.data;
+  const isMobile = props.isMobile;
+
+  console.log(isMobile);
 
   return (
     <>
@@ -9,19 +12,19 @@ function Header(props) {
         <nav>
           <ul class="scroll-link">
             <a href="#infos">
-              <li>À propos</li>
+              <li>{data[0].title}</li>
             </a>
             <a href="#vignerons">
-              <li>Vignerons</li>
+              <li>{data[1].title}</li>
             </a>
             <a href="#contact">
-              <li>Contact</li>
+              <li>{data[2].title}</li>
             </a>
           </ul>
         </nav>
 
         <div class="content-home">
-          <div class="container-logo">
+          <div class={isMobile}>
             <h1>Abra Vinum</h1>
             <h1>Abra Vinu</h1>
             <h1>Abra Vin</h1>
