@@ -14,6 +14,11 @@ function Contact(props) {
             E-mail : <span> abra-vinum@info.com</span>
           </p>
         </div>
+        <div class="catalogue">
+          <a href="https://www.abravinum.com/pdf/catalogue.pdf">
+            Accès au catalogue
+          </a>
+        </div>
       </section>
 
       <footer>
@@ -29,7 +34,7 @@ function Contact(props) {
           </a>
         </div>
         <div class="retour-top scroll-link">
-          <a href="#home">Retour</a>
+          <a href="#home">&#8593;</a>
         </div>
       </footer>
     </>

@@ -1,23 +1,26 @@
 import { Component } from "preact";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import "./Vignerons.css";
 
 export default class Vignerons extends Component {
   constructor() {
     super();
 
     this.state = {
-      season: null,
       seasons: [],
+      seasonsLabels: [],
+      currentSeason: null,
+      formatedSeason: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
+    this.parseSeasons();
     this.vineyardSelected();
-    this.initMouseListeners();
-    this.parseSeason();
+
     AOS.init();
 
     window.addEventListener("scroll", (e) => {
@@ -26,7 +29,18 @@ export default class Vignerons extends Component {
   }
 
   handleChange(e) {
-    this.setState({ season: e.target.value });
+    const season = this.state.seasons.find((season) => {
+      return season.label === e.target.value;
+    });
+    this.setState(
+      {
+        currentSeason: season,
+        formatedSeason: this.formatData(season.content),
+      },
+      () => {
+        this.initMouseListeners();
+      }
+    );
   }
 
   //js d'event
@@ -45,14 +59,9 @@ export default class Vignerons extends Component {
     document.querySelectorAll(".list-vigneron-txt").forEach(function (el) {
       el.children[0].classList.add("selectTxt");
     });
-
     document.querySelectorAll(".domaine-img").forEach((e) => {
       e.childNodes[0].classList.add("active-img");
     });
-
-    // document.querySelectorAll(".domaine-img").childNodes.forEach(function (el) {
-    //   el.children[0].classList.add("active-img");
-    // });
   }
 
   initMouseListeners() {
@@ -64,10 +73,11 @@ export default class Vignerons extends Component {
         e.target.parentNode.parentNode.childNodes.forEach((e) => {
           e.classList.remove("active-vigneron");
         });
+
         e.target.parentNode.parentNode.parentNode
           .querySelectorAll(".list-vigneron-txt .txt-vigneron")
           .forEach((e) => {
-            e.classList.remove("selectTxt");
+            e.classList.remove("active-txt");
           });
         e.target.parentNode.parentNode.parentNode.parentNode.parentNode
           .querySelector(".domaine-img")
@@ -89,58 +99,58 @@ export default class Vignerons extends Component {
         let containerImg = domainContainer.querySelectorAll(
           ".list-vigneron-txt .txt-vigneron"
         );
-        containerImg[indexClicked].classList.toggle("selectTxt");
+        containerImg[indexClicked].classList.toggle("active-txt");
 
         domainContainer.parentNode.parentNode
           .querySelector(".domaine-img")
           .childNodes[indexClicked].classList.toggle("active-img");
-        // if (containerImg) {
-        //   [...containerImg.children].forEach((e) => {
-        //     e.classList.remove("active-img");
-        //   });
-        //   containerImg.children[indexClicked].classList.add("active-img");
+
+        // if (window.innerWidth < 750) {
+        //   e.target.parentNode.parentNode.parentNode.parentNode.style.marginBottom =
+        //     e.target.parentNode.parentNode.parentNode.querySelectorAll(
+        //       ".list-vigneron-txt .txt-vigneron"
+        //     )[indexClicked].offsetHeight +
+        //     35 +
+        //     "px";
         // }
-
-        // // get list vignerons siblings
-        // let siblings = [];
-        // let sibling = vigneronClicked.parentNode.firstChild;
-        // while (sibling) {
-        //   if (sibling.nodeType === 1 && sibling !== e) {
-        //     siblings.push(sibling);
-        //   }
-        //   sibling = sibling.nextSibling;
-        // }
-
-        // //remove visible el
-        // siblings.forEach((e) => {
-        //   e.classList.remove("active-vignerons");
-        // });
-
-        // //add class
-        // vigneronClicked.classList.toggle("active-vignerons");
       });
     });
   }
 
   //js boucle DOM
-  getVigneronName(vigneron) {
-    // console.log(vigneron.season);
+  getVigneronName(vigneron, index) {
+    const classTxt =
+      index === 0 ? "nom-vigneron active-vigneron" : "nom-vigneron";
+
     return (
       <>
-        <div class="nom-vigneron">
+        <div className={classTxt}>
           <h5>{vigneron.name}</h5>
         </div>
       </>
     );
   }
 
-  getVigneronTxt(vigneron) {
+  getVigneronTxt(vigneron, index) {
+    const classTxt = index === 0 ? "txt-vigneron active-txt" : "txt-vigneron";
+
     return (
       <>
-        <div class="txt-vigneron">
+        <div className={classTxt}>
           <p>{vigneron.headline}</p>
         </div>
       </>
+    );
+  }
+
+  getImage(vigneron, index, indexVigneron) {
+    const imgClassName = indexVigneron === 0 ? "active-img" : "";
+    return (
+      <img
+        src={"static/img" + index + ".jpg"}
+        className={imgClassName}
+        alt=""
+      />
     );
   }
 
@@ -150,16 +160,15 @@ export default class Vignerons extends Component {
         {/* bourgogne */}
         <article
           data-aos="fade-up"
-          data-aos-offset="100"
+          data-aos-offset="50"
           data-aos-delay="50"
-          data-aos-duration="800"
+          data-aos-duration="600"
           class={
-            "domaine-section domaine-section-bourgogne " +
+            "domaine-section " +
             (regionData[region].length <= 1
               ? "unique-vigneron"
               : "multiple-vigneron")
           }
-          id="bourgogne"
         >
           <div class="container-poly container-poly-2">
             <img src="static/polyedre-2.png" alt="" />
@@ -173,22 +182,22 @@ export default class Vignerons extends Component {
 
               <div class="container-all">
                 <div class="list-vigneron-name">
-                  {regionData[region].map((vigneron) =>
-                    this.getVigneronName(vigneron)
+                  {regionData[region].map((vigneron, index) =>
+                    this.getVigneronName(vigneron, index)
                   )}
                 </div>
                 <div class="list-vigneron-txt">
-                  {regionData[region].map((vigneron) =>
-                    this.getVigneronTxt(vigneron)
+                  {regionData[region].map((vigneron, index) =>
+                    this.getVigneronTxt(vigneron, index)
                   )}
                 </div>
               </div>
             </div>
 
-            <div class="domaine-img container-img">
-              {regionData[region].map(() => (
-                <img src={"static/img" + index + ".jpg"} alt="" />
-              ))}
+            <div class="domaine-img container-img ">
+              {regionData[region].map((vigneron, indexVigneron) =>
+                this.getImage(vigneron, index, indexVigneron)
+              )}
             </div>
           </div>
         </article>
@@ -196,30 +205,65 @@ export default class Vignerons extends Component {
     );
   }
 
-  setDefaultSeason() {
-    this.setState({
-      season: this.state.seasons[this.state.seasons.length - 1],
-    });
-  }
-
-  parseSeason() {
+  parseSeasons() {
     const { allData } = this.props;
 
-    let saisons = [];
+    let seasons = [];
     if (allData) {
       Object.entries(allData).forEach((sheetPage) => {
-        let contentPage = sheetPage[1];
-        let firstLine = contentPage[0];
-        if (firstLine != undefined && firstLine.hasOwnProperty("saison")) {
-          saisons.push(firstLine.saison);
+        const sheetData = sheetPage[1];
+        if (sheetData.length && sheetData[0].hasOwnProperty("saison")) {
+          const seasonLabel = sheetData[0].saison;
+          seasons.push({ label: seasonLabel, content: sheetData });
         }
       });
     }
-    this.setState({ seasons: saisons, season: saisons[saisons.length - 1] });
+
+    const lastSeason = seasons[seasons.length - 1];
+    this.setState(
+      {
+        seasons: seasons,
+        currentSeason: lastSeason,
+        formatedSeason: this.formatData(lastSeason.content),
+      },
+      () => {
+        this.initMouseListeners();
+      }
+    );
+  }
+
+  formatData(data) {
+    let formatedResult = {};
+
+    data.forEach((vigneron, index) => {
+      if (!formatedResult[vigneron.region]) {
+        formatedResult[vigneron.region] = [];
+      }
+      formatedResult[vigneron.region].push(vigneron);
+    });
+
+    for (const [key, value] of Object.entries(formatedResult)) {
+      value.sort(function (a, b) {
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    const sorted = Object.keys(formatedResult)
+      .sort()
+      .reduce(
+        (acc, key) => ({
+          ...acc,
+          [key]: formatedResult[key],
+        }),
+        {}
+      );
+
+    return sorted;
   }
 
   render() {
-    const { data, regionData } = this.props;
+    const { data } = this.props;
+    const { seasons, currentSeason, formatedSeason } = this.state;
 
     return (
       <>
@@ -230,24 +274,28 @@ export default class Vignerons extends Component {
           <div class="vigneron-saison">
             <h2>{data.title}</h2>
             <p>{data.headline}</p>
-            <label>
-              <select
-                name="saison"
-                id="saison-select"
-                value={this.state.season}
-                onChange={this.handleChange}
-              >
-                {this.state.seasons.map((listSaison) => (
-                  <option value={listSaison}>{listSaison}</option>
-                ))}
-              </select>
-            </label>
-          </div>
-          <div class="container-vignerons-all" ref={this.container}>
-            {Object.keys(regionData).map((region, index) =>
-              this.getRegion(region, regionData, index)
+            {currentSeason && seasons && (
+              <label>
+                <select
+                  name="saison"
+                  id="saison-select"
+                  value={currentSeason.label}
+                  onChange={this.handleChange}
+                >
+                  {seasons.map((season) => (
+                    <option value={season.label}>{season.label}</option>
+                  ))}
+                </select>
+              </label>
             )}
           </div>
+          {currentSeason && seasons && (
+            <div class="container-vignerons-all" ref={this.container}>
+              {Object.keys(formatedSeason).map((region, index) =>
+                this.getRegion(region, formatedSeason, index)
+              )}
+            </div>
+          )}
         </section>
       </>
     );

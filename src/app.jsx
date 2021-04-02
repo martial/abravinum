@@ -12,13 +12,13 @@ export class App extends Component {
     super();
     this.state = {
       data: null,
-      regionData: null,
       season: null,
     };
   }
 
   componentDidMount() {
     this.getData();
+    this.isMobile();
   }
 
   async getData() {
@@ -28,7 +28,7 @@ export class App extends Component {
     this.setState(
       {
         data: rest.data,
-        regionData: this.formatData(rest.data),
+
         season: rest.data,
       },
       () => {
@@ -37,52 +37,29 @@ export class App extends Component {
     );
   }
 
-  formatData(data) {
-    // console.log(data);
-
-    let formatedResult = {};
-
-    data.Automne2019.forEach((vigneron, index) => {
-      if (!formatedResult[vigneron.region]) {
-        formatedResult[vigneron.region] = [];
-      }
-      formatedResult[vigneron.region].push(vigneron);
-    });
-
-    for (const [key, value] of Object.entries(formatedResult)) {
-      value.sort(function (a, b) {
-        return a.name.localeCompare(b.name);
-      });
-    }
-
-    const sorted = Object.keys(formatedResult)
-      .sort()
-      .reduce(
-        (acc, key) => ({
-          ...acc,
-          [key]: formatedResult[key],
-        }),
-        {}
-      );
-
-    return sorted;
-  }
-
   onDataLoadedHandler() {
     // this.setParralax();
   }
 
-  // setParralax() {
-  //   new Rellax(".container-poly");
-  // }
+  isMobile() {
+    window.addEventListener(
+      "resize",
+      () => {
+        this.setState({
+          isMobile: window.innerWidth < 800,
+        });
+      },
+      false
+    );
+  }
 
   render() {
     const { data } = this.state;
     const loading = !data;
-
-    const regionData = this.state.regionData;
-
-    console.log(data, regionData);
+    const isMobile = this.state.isMobile
+      ? "container-logo active-hover-logo"
+      : "container-logo";
+    console.log(isMobile);
 
     if (!loading) {
       setTimeout(function endLoad() {
@@ -105,17 +82,13 @@ export class App extends Component {
             <div id="paper-texture"></div>
             <div id="map-texture"></div>
 
-            <Header data={data.Main}></Header>
+            <Header data={data.Main} isMobile={isMobile}></Header>
 
             <main>
               <About data={data.Main[0]}></About>
 
               {/* TODO Faire un component pour les vigerons */}
-              <Vignerons
-                allData={data}
-                data={data.Main[1]}
-                regionData={regionData}
-              ></Vignerons>
+              <Vignerons allData={data} data={data.Main[1]}></Vignerons>
 
               <section id="map"></section>
 
