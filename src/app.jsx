@@ -1,18 +1,19 @@
 import { Component } from "preact";
 import axios from "axios";
-import Rellax from "rellax";
+// import Rellax from "rellax";
 import About from "./components/About";
 import Header from "./components/Header";
 import Vignerons from "./components/Vignerons";
 import Contact from "./components/Contact";
+import "./components/Loading.css";
 
 export class App extends Component {
   constructor() {
     super();
     this.state = {
-      tempPage: false,
       data: null,
       regionData: null,
+      season: null,
     };
   }
 
@@ -22,10 +23,14 @@ export class App extends Component {
 
   async getData() {
     const url =
-      "https://script.google.com/macros/s/AKfycbz_wf-eY9ttJoi7CYmlAuIevdUdSPXhr3dC5fFB6yYSUnFqL31r-Fpw3AfM5D0hNXXuPw/exec";
+      "https://script.google.com/macros/s/AKfycbzDzIKo2XL4LngTthubZd6akG5Dq0_ua7lUlj-4hlnqMUFzGc23tYwwOkWkIPDAF7sjNQ/exec";
     const rest = await axios.get(url);
     this.setState(
-      { data: rest.data, regionData: this.formatData(rest.data) },
+      {
+        data: rest.data,
+        regionData: this.formatData(rest.data),
+        season: rest.data,
+      },
       () => {
         this.onDataLoadedHandler();
       }
@@ -33,8 +38,11 @@ export class App extends Component {
   }
 
   formatData(data) {
+    // console.log(data);
+
     let formatedResult = {};
-    data.Regions.forEach((vigneron, index) => {
+
+    data.Automne2019.forEach((vigneron, index) => {
       if (!formatedResult[vigneron.region]) {
         formatedResult[vigneron.region] = [];
       }
@@ -61,19 +69,26 @@ export class App extends Component {
   }
 
   onDataLoadedHandler() {
-    this.setParralax();
-    document.querySelector("#loading").classList.add("anim-load");
+    // this.setParralax();
   }
 
-  setParralax() {
-    new Rellax(".para");
-  }
+  // setParralax() {
+  //   new Rellax(".container-poly");
+  // }
 
   render() {
     const { data } = this.state;
     const loading = !data;
 
     const regionData = this.state.regionData;
+
+    console.log(data, regionData);
+
+    if (!loading) {
+      setTimeout(function endLoad() {
+        document.querySelector("#loading").classList.add("anim-load");
+      }, 500);
+    }
 
     return (
       <>
@@ -90,18 +105,23 @@ export class App extends Component {
             <div id="paper-texture"></div>
             <div id="map-texture"></div>
 
-            <Header data={data.Main} showMenu={!this.state.tempPage}></Header>
-            {!this.state.tempPage && (
-              <main>
-                <About data={data.Main[0]}></About>
-                <Vignerons
-                  data={data.Main[1]}
-                  regionData={regionData}
-                ></Vignerons>
-                <section id="map"></section>
-                <Contact data={data.Main[2]}></Contact>
-              </main>
-            )}
+            <Header data={data.Main}></Header>
+
+            <main>
+              <About data={data.Main[0]}></About>
+
+              {/* TODO Faire un component pour les vigerons */}
+              <Vignerons
+                allData={data}
+                data={data.Main[1]}
+                regionData={regionData}
+              ></Vignerons>
+
+              <section id="map"></section>
+
+              {/* TODO Faire un component pour les contacts */}
+              <Contact data={data.Main[2]}></Contact>
+            </main>
           </>
         )}
       </>

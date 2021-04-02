@@ -41,10 +41,10 @@ nav {
   /* z-index: -2; */
   right: 50px;
 }
-nav ul a:nth-child(odd) {
+/* nav ul a:nth-child(odd) {
   position: relative;
   left: -30px;
-}
+} */
 nav li {
   font-family: "Baskerville", serif;
   font-size: 1.4em;
