@@ -3,6 +3,10 @@ import "./Contact.css";
 function Contact(props) {
   const data = props.data;
 
+  const contentObj = {
+    __html: data.content.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+  };
+
   return (
     <>
       <section id="contact">
@@ -11,7 +15,7 @@ function Contact(props) {
         <div class="content-contact">
           <h5>{data.headline}</h5>
           <p>
-            Téléphone : <span>{data.content}</span>
+            Téléphone : <span dangerouslySetInnerHTML={contentObj}></span>
           </p>
           <p>
             E-mail : <span>{data.content2}</span>

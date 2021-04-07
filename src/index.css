@@ -207,12 +207,14 @@ select::-ms-expand {
   background: var(--dark-color);
   overflow: hidden;
   /* border-radius: .25em; */
+ 
 }
 .mySelect select {
   flex: 1;
   padding: 0 .5em;
   color: var(--dark-color);
   cursor: pointer;
+  font-weight: bold;
 }
 /* Arrow */
 .mySelect::after {

@@ -248,7 +248,7 @@ export default class Vignerons extends Component {
 
     for (const [key, value] of Object.entries(formatedResult)) {
       value.sort(function (a, b) {
-        return a.name.localeCompare(b.name);
+        return a.name.toString().localeCompare(b.name);
       });
     }
 
