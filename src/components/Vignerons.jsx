@@ -279,18 +279,21 @@ export default class Vignerons extends Component {
             <h2>{data.title}</h2>
             <p>{data.headline}</p>
             {currentSeason && seasons && (
-              <label>
+              <div className="mySelect">
                 <select
                   name="saison"
                   id="saison-select"
                   value={currentSeason.label}
                   onChange={this.handleChange}
                 >
+                  <option selected disabled>
+                    Choisissez une saison
+                  </option>
                   {seasons.map((season) => (
                     <option value={season.label}>{season.label}</option>
                   ))}
                 </select>
-              </label>
+              </div>
             )}
           </div>
           {currentSeason && seasons && (

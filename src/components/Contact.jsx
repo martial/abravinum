@@ -1,5 +1,8 @@
+import "./Contact.css";
+
 function Contact(props) {
   const data = props.data;
+
   return (
     <>
       <section id="contact">
@@ -8,10 +11,10 @@ function Contact(props) {
         <div class="content-contact">
           <h5>{data.headline}</h5>
           <p>
-            Téléphone : <span> 06.23.45.81.98</span>
+            Téléphone : <span>{data.content}</span>
           </p>
           <p>
-            E-mail : <span> abra-vinum@info.com</span>
+            E-mail : <span>{data.content2}</span>
           </p>
         </div>
         <div class="catalogue">

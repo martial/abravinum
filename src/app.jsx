@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import "./components/Loading.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 export class App extends Component {
   constructor() {
     super();

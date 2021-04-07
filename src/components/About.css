@@ -1,0 +1,40 @@
+
+/***********/
+/* a propos */
+/***********/
+#infos {
+	position: relative;
+	background-color: var(--white-bg);
+	padding: 0 20px;
+  }
+  #infos .container-section {
+	padding: 150px 0 100px 0;
+	margin: 0 auto;
+	max-width: var(--width-container);
+  }
+  .content-apropos {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 50px;
+  }
+  .apropos-right {
+	width: 400px;
+  }
+  .apropos-right h3 {
+	margin-bottom: 30px;
+  }
+  .container-img.img-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-height: 50vh;
+	overflow: hidden;
+  }
+  
+  .container-domaine,
+  .vigneron-saison {
+	padding: 0 20px;
+  }
+  
