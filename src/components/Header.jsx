@@ -4,8 +4,6 @@ function Header(props) {
   const data = props.data;
   const isMobile = props.isMobile;
 
-  console.log(isMobile);
-
   return (
     <>
       <header id="home">

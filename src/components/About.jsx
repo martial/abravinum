@@ -1,11 +1,11 @@
 import "./About.css";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function About(props) {
   const data = props.data;
 
-  AOS.init();
+  const contentObj = {
+    __html: data.content.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+  };
 
   return (
     <>
@@ -20,9 +20,9 @@ function About(props) {
         <div class="container-section">
           <article class="content-apropos">
             <h2>{data.title}</h2>
-            <div class="apropos-right">
-              <h3>{data.headline}</h3>
-              <p>{data.content}</p>
+            <div class="">
+              <h3>&nbsp;</h3>
+              <p dangerouslySetInnerHTML={contentObj}></p>
             </div>
           </article>
           <article class="container-img img-info">

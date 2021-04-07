@@ -134,10 +134,14 @@ export default class Vignerons extends Component {
   getVigneronTxt(vigneron, index) {
     const classTxt = index === 0 ? "txt-vigneron active-txt" : "txt-vigneron";
 
+    const descrObj = {
+      __html: vigneron.headline.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+    };
+
     return (
       <>
         <div className={classTxt}>
-          <p>{vigneron.headline}</p>
+          <p dangerouslySetInnerHTML={descrObj}></p>
         </div>
       </>
     );

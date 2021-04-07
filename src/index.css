@@ -120,8 +120,8 @@
 /***********/
 /* COMMUNS */
 /***********/
-#app{
-    overflow-x: hidden;
+#app {
+  overflow-x: hidden;
 }
 * {
   margin: 0;
@@ -160,7 +160,7 @@ h5 {
 }
 p {
   font-family: "Lato", sans-serif;
-  font-size: 0.8em;
+  font-size: 1em;
   /* font-style: italic; */
   color: #383737;
 }
@@ -216,13 +216,15 @@ label:after {
   color: #fff;
   pointer-events: none;
 }
-label option{
-    background-color: var(--dark-color);
-    color: var(--light-color);
+label option {
+  background-color: var(--dark-color);
+  color: var(--light-color);
 }
-select option:hover, select option:focus, select option:checked{
-    color: var(--dark-color) !important;
-    background-color: red !important;
+select option:hover,
+select option:focus,
+select option:checked {
+  color: var(--dark-color) !important;
+  background-color: red !important;
 }
 /***********/
 /* polyedre img */
@@ -362,12 +364,12 @@ body {
   display: block;
   font-size: 1.5em;
 }
-.catalogue{
+.catalogue {
   display: flex;
   justify-content: center;
   text-align: center;
 }
-.catalogue a{
+.catalogue a {
   background-color: var(--dark-color);
   color: var(--light-color);
   padding: 5px 20px;
@@ -375,7 +377,7 @@ body {
   text-transform: uppercase;
   transition: all 300ms ease-in;
 }
-.catalogue a:hover{
+.catalogue a:hover {
   outline-offset: 2px;
 }
 
@@ -393,8 +395,8 @@ footer a {
   color: rgb(211, 200, 200);
 }
 footer .retour-top {
-    font-size: 18px;
-    margin: 0 auto;
+  font-size: 18px;
+  margin: 0 auto;
 }
 .reseaux {
   flex: 1;
@@ -478,18 +480,19 @@ footer .retour-top {
   .container-domaine .container-content {
     min-width: inherit;
   }
-  .vigneron-saison label, .vigneron-saison select{
-      width: 100%;
+  .vigneron-saison label,
+  .vigneron-saison select {
+    width: 100%;
   }
-  footer{
-      padding: 20px 30px 30px 20px;
-      margin-bottom: 50px;
-      background-color: rgba(255, 255, 255, 0.199);
+  footer {
+    padding: 20px 30px 30px 20px;
+    margin-bottom: 50px;
+    background-color: rgba(255, 255, 255, 0.199);
   }
-  .container-domaine .domaine-img{
-      width: 100%;
+  .container-domaine .domaine-img {
+    width: 100%;
   }
-  footer a{
+  footer a {
     color: black;
   }
 }

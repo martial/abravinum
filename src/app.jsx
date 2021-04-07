@@ -6,7 +6,8 @@ import Header from "./components/Header";
 import Vignerons from "./components/Vignerons";
 import Contact from "./components/Contact";
 import "./components/Loading.css";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 export class App extends Component {
   constructor() {
     super();
@@ -38,7 +39,8 @@ export class App extends Component {
   }
 
   onDataLoadedHandler() {
-    // this.setParralax();
+    // this.setParralax()
+    AOS.init();
   }
 
   isMobile() {
