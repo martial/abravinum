@@ -30,7 +30,7 @@ function Contact(props) {
 
       <footer>
         <div class="reseaux">
-          <a href="">
+          {/* <a href="">
             <span>Facebook</span>
           </a>
           <a href="">
@@ -38,7 +38,7 @@ function Contact(props) {
           </a>
           <a href="">
             <span>Instagram</span>
-          </a>
+          </a> */}
         </div>
         <div class="retour-top scroll-link">
           <a href="#home">&#8593;</a>

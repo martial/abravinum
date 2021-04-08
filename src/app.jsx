@@ -62,7 +62,7 @@ export class App extends Component {
     const isMobile = this.state.isMobile
       ? "container-logo active-hover-logo"
       : "container-logo";
-    console.log(isMobile);
+    // console.log(isMobile);
 
     if (!loading) {
       setTimeout(function endLoad() {
