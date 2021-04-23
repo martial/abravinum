@@ -20,13 +20,13 @@ function About(props) {
         <div class="container-section">
           <article class="content-apropos">
             <h2>{data.title}</h2>
-            <div class="">
+            <div class="about-txt">
               <h3>&nbsp;</h3>
               <p dangerouslySetInnerHTML={contentObj}></p>
             </div>
           </article>
           <article class="container-img img-info">
-            <img src="../static/img-about.jpg" alt="" />
+            <img src="../static/images/resized005.jpg" alt="" />
           </article>
         </div>
       </section>

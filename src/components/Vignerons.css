@@ -22,7 +22,16 @@
   position: relative;
   width: 300px;
   min-height: 35vh;
+  flex: 1;
+  max-width: 500px;
 }
+
+@media screen and (max-width: 750px) {
+  .domaine-section .domaine-img {
+    min-width: 100%;
+  }
+}
+
 .domaine-section .domaine-img img {
   display: none;
   opacity: 0;
@@ -45,6 +54,7 @@
 .container-domaine {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   max-width: var(--width-container);
   margin: 0 auto;
@@ -84,7 +94,7 @@
   display: flex;
 }
 .list-vigneron-name {
-  min-width: 180px;
+  /*min-width: 180px;*/
   padding-right: 20px;
   margin-right: 20px;
   border-right: solid var(--width-line) black;
@@ -96,6 +106,7 @@
 }
 .nom-vigneron {
   cursor: pointer;
+  white-space: nowrap;
 }
 .nom-vigneron.active-vigneron h5 {
   font-weight: 600;

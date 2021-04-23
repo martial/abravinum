@@ -151,7 +151,7 @@ export default class Vignerons extends Component {
     const imgClassName = indexVigneron === 0 ? "active-img" : "";
     return (
       <img
-        src={"static/img" + index + ".jpg"}
+        src={"static/images/resized00" + index + ".jpg"}
         className={imgClassName}
         alt=""
       />

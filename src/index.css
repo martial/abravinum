@@ -16,7 +16,7 @@
   --h1-size: 2.5em;
   --white-bg: rgba(255, 255, 255, 0.418);
 
-  --width-container: 950px;
+  --width-container: 1100px;
   --width-line: 3px;
 }
 
@@ -179,8 +179,12 @@ li {
   opacity: 0.2;
 }
 
-
-
+.active-img {
+  border-radius: 6px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
 /* my select */
 select {
   -webkit-appearance: none;
@@ -206,23 +210,24 @@ select::-ms-expand {
   line-height: 1.5;
   background: var(--dark-color);
   overflow: hidden;
+  margin-top: 40px;
   /* border-radius: .25em; */
- 
 }
 .mySelect select {
   flex: 1;
-  padding: 0 .5em;
+  padding: 0 0.5em;
   color: var(--dark-color);
   cursor: pointer;
   font-weight: bold;
 }
 /* Arrow */
 .mySelect::after {
-  content: '\25BC';
+  content: "\25BC";
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0 1em;
+  padding-top: 2px;
+  padding-right: 5px;
   background: var(--light-color);
   cursor: pointer;
   pointer-events: none;
@@ -263,6 +268,7 @@ body {
   background: white;
 }
 #paper-texture {
+  filter: blur(4px);
   position: fixed;
   z-index: -1;
   width: 100vw;
@@ -286,7 +292,6 @@ body {
   background-repeat: no-repeat;
   pointer-events: none;
 }
-
 
 /***********/
 /* responsive */
@@ -319,6 +324,7 @@ body {
   .domaine-section {
     padding: 75px 0 100px 0;
   }
+
   #vignerons .domaine-section:nth-child(2n) .container-domaine {
     flex-direction: row;
   }

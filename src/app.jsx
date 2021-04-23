@@ -25,7 +25,7 @@ export class App extends Component {
 
   async getData() {
     const url =
-      "https://script.google.com/macros/s/AKfycbzDzIKo2XL4LngTthubZd6akG5Dq0_ua7lUlj-4hlnqMUFzGc23tYwwOkWkIPDAF7sjNQ/exec";
+      "https://script.google.com/macros/s/AKfycbzoIJ6TjcPGJUNHhOLInd40shbf_rEwLGR-Ce6fhLamu5RD3QVr2sptEX0J5cugUSBSvA/exec";
     const rest = await axios.get(url);
     this.setState(
       {
@@ -77,7 +77,7 @@ export class App extends Component {
           <div class="container-loading container-polyedre">
             <img src="static/polyedre-1.png" alt="polyedre loading" />
           </div>
-          <span>Loading...</span>
+          <span></span>
         </div>
 
         {!loading && (
