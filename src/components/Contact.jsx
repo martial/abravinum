@@ -4,7 +4,6 @@ import "./Contact.css";
 function Contact(props) {
   const [currentCatalogue, setCurrentCatalogue] = useState();
   const data = props.data;
-  console.log(props.data);
 
   const contentObj = {
     __html: data.content.replace(/(?:\r\n|\r|\n)/g, "<br>"),
@@ -12,7 +11,6 @@ function Contact(props) {
 
   const handleChange = (e) => {
     setCurrentCatalogue(e.target.value);
-    console.log(e.target.value);
   };
 
   return (

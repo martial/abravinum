@@ -149,9 +149,11 @@ export default class Vignerons extends Component {
 
   getImage(vigneron, index, indexVigneron) {
     const imgClassName = indexVigneron === 0 ? "active-img" : "";
+    let nameImg = vigneron.region.toLowerCase().replace(/\s/g, "");
+    console.log(nameImg);
     return (
       <img
-        src={"static/images/resized00" + index + ".jpg"}
+        src={"static/images/" + nameImg + ".jpg"}
         className={imgClassName}
         alt=""
       />
