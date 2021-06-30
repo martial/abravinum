@@ -1,0 +1,131 @@
+/***********/
+/* Vignerons */
+/***********/
+#vignerons {
+  position: relative;
+  padding: 150px 0 50px 0;
+}
+.vigneron-saison {
+  margin: 0 auto;
+  max-width: var(--width-container);
+}
+.vigneron-saison p {
+  font-size: 1.1em;
+  margin: 0px 0 8px 0;
+}
+.domaine-section {
+  position: relative;
+  z-index: 0;
+  padding: 150px 0 200px 0;
+}
+.domaine-section .domaine-img {
+  position: relative;
+  width: 300px;
+  min-height: 35vh;
+  flex: 1;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 750px) {
+  .domaine-section .domaine-img {
+    min-width: 100%;
+  }
+}
+
+.domaine-section .domaine-img img {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 300ms ease-in-out;
+}
+#vignerons .domaine-section:nth-child(even) {
+  background-color: var(--white-bg);
+}
+#vignerons .domaine-section:nth-child(even) .container-domaine {
+  flex-direction: row-reverse;
+}
+#vignerons .domaine-section:nth-child(even) .domaine-img {
+  margin-right: 20px;
+}
+#vignerons .domaine-section:nth-child(odd) .domaine-img {
+  margin-left: 20px;
+}
+.container-domaine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: var(--width-container);
+  margin: 0 auto;
+  min-height: 500px;
+}
+.unique-vigneron .container-content {
+  max-width: 450px;
+}
+.container-content {
+  position: relative;
+  flex: 1;
+  min-width: 400px;
+  max-width: 550px;
+  /* margin-left: calc(var(--left-border) * -1); */
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+.nom-domaine {
+  margin-bottom: 20px;
+}
+.unique-vigneron .container-all {
+  flex-direction: column;
+}
+.unique-vigneron .list-vigneron-name {
+  padding-left: 20px;
+  border-right: solid var(--width-line) black;
+  border-left: solid var(--width-line) black;
+  border-right: none;
+}
+.unique-vigneron .txt-vigneron {
+  top: 100%;
+  margin-top: 10px;
+}
+.unique-vigneron .container-all .nom-vigneron {
+  text-align: left;
+}
+.container-all {
+  position: relative;
+  display: flex;
+}
+.list-vigneron-name {
+  /*min-width: 180px;*/
+  padding-right: 20px;
+  margin-right: 20px;
+  border-right: solid var(--width-line) black;
+}
+.container-all .nom-vigneron {
+  /* transform: translateX(calc(-100% - var(--left-border) * -2)); */
+  margin: 3px 0;
+  text-align: right;
+}
+.nom-vigneron {
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nom-vigneron.active-vigneron h5 {
+  font-weight: 600;
+}
+
+.txt-vigneron {
+  /* position: absolute; */
+  top: 0;
+  opacity: 0;
+  display: none;
+}
+.txt-vigneron.active-txt {
+  opacity: 1;
+  display: block;
+}
+.domaine-section .domaine-img img.active-img {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}

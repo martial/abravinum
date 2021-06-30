@@ -1,41 +1,31 @@
 {
-  "name": "open-react-template",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "classnames": "^2.2.6",
-    "lodash": "^4.17.20",
-    "node-sass": "^4.13.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-ga": "^2.7.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1"
+  "name": "tim",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
   },
+  "dependencies": {
+    "aos": "^3.0.0-beta.6",
+    "axios": "^0.21.1",
+    "preact": "^10.5.9",
+    "rellax": "^1.12.1"
+  },
+  "devDependencies": {
+    "@prefresh/vite": "^2.0.0",
+    "vite": "^2.1.0"
+  },
+  "main": "vite.config.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cruip/open-react-template.git"
+    "url": "git+https://github.com/martial/abravinum.git"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martial/abravinum/issues"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {}
+  "homepage": "https://github.com/martial/abravinum#readme",
+  "description": ""
 }

@@ -1,0 +1,68 @@
+/***********/
+/* header */
+/***********/
+header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.container-logo {
+  position: relative;
+  height: calc(var(--h1-size) + 1em);
+  overflow: hidden;
+  transition: height 1s ease-in-out;
+  padding-top: 1em;
+  cursor: pointer;
+}
+
+header:hover .container-logo {
+  height: calc(var(--h1-size) * 10 + 2em);
+}
+.active-hover-logo{
+  height: calc(var(--h1-size) * 10 + 2em);
+}
+.container-logo::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  left: 50%;
+  top: 0;
+  height: 3px;
+  background-color: #222222;
+  transform: translateX(-50%);
+}
+header h1 {
+  font-size: var(--h1-size);
+  letter-spacing: 20px;
+  text-align: center;
+}
+nav {
+  position: absolute;
+  right: 50px;
+}
+nav li {
+  font-family: "Baskerville", serif;
+  font-size: 1.4em;
+  margin: 15px 0;
+}
+.content-home {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-polyedre-home {
+  position: absolute;
+  max-width: 500px;
+  width: 50vw;
+  min-width: 200px;
+}
+.container-polyedre img {
+  width: 100%;
+}
+.container-img img {
+  width: 100%;
+}

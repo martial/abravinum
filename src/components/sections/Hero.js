@@ -64,15 +64,14 @@ const Hero = ({
               Abra Vinum
             </h1>
             <div className="container-xs">
-              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
-                A très bientôt!
-                </p>
-              
+              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">Pierre Charles & Sarah Gandhillon</p>
+              <p className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">Vente de vin</p>
+
             </div>
           </div>
           <div className="hero-figure reveal-from-bottom illustration-element-01" data-reveal-value="20px" data-reveal-delay="800">
               <Image
-                src={require('./../../assets/images/abravinumlogo.jpg')}
+                src={require('./../../assets/images/abravinumlogo.png')}
                 alt="Hero"
                 width={512}
                 height={512} />

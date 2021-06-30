@@ -1,0 +1,386 @@
+/*************************/
+/* stylesheet de timothé */
+/*************************/
+
+/*************/
+/* VARIABLES */
+/*************/
+:root {
+  --dark-color: #222222;
+  --light-color: #fcfcf7;
+
+  --primary-color: #ab743e;
+  --second-color: #e1bf8f;
+  --third-color: #f8f1e9;
+
+  --h1-size: 2.5em;
+  --white-bg: rgba(255, 255, 255, 0.418);
+
+  --width-container: 1100px;
+  --width-line: 3px;
+}
+
+*::selection {
+  color: var(--light-color);
+  background-color: var(--primary-color);
+  -webkit-text-fill-color: var(--light-color);
+  -webkit-text-stroke-width: 0px;
+}
+*::-moz-selection {
+  color: var(--light-color);
+  background-color: var(--primary-color);
+  -webkit-text-fill-color: var(--light-color);
+  -webkit-text-stroke-width: 0px;
+}
+
+/* Playfair */
+
+@font-face {
+  font-family: "Playfair";
+  src: url("../static/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Playfair";
+  src: url("../static/fonts/PlayfairDisplay-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 400 900;
+}
+
+/* Lato */
+
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-BlackItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-BoldItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-LightItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-ThinItalic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-Black.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-Bold.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../static/fonts/Lato-Thin.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Baskerville";
+  src: url("../static/BASKVILL.ttf") format("truetype");
+  font-style: normal;
+}
+
+/***********/
+/* COMMUNS */
+/***********/
+#app {
+  overflow-x: hidden;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  overflow-x: hidden;
+}
+h1 {
+  font-family: "Baskerville", serif;
+  text-transform: uppercase;
+}
+h2 {
+  font-family: "Baskerville", serif;
+  font-size: 4em;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+h3 {
+  font-family: "Playfair", serif;
+  font-weight: 400;
+}
+h4 {
+  font-family: "Baskerville", serif;
+  font-size: 2.3em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+h5 {
+  font-family: "Lato", serif;
+  font-weight: 400;
+  font-size: 1em;
+}
+p {
+  font-family: "Lato", sans-serif;
+  font-size: 1em;
+  /* font-style: italic; */
+  color: #383737;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+li {
+  list-style: none;
+}
+.container-polyedre {
+  pointer-events: none;
+  z-index: -1;
+}
+.container-polyedre img {
+  opacity: 0.2;
+}
+
+.active-img {
+  border-radius: 6px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+/* my select */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: var(--light-color);
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.mySelect {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 1.5em;
+  line-height: 1.5;
+  background: var(--dark-color);
+  overflow: hidden;
+  margin-top: 40px;
+  /* border-radius: .25em; */
+}
+.mySelect select {
+  flex: 1;
+  padding: 0 0.5em;
+  color: var(--dark-color);
+  cursor: pointer;
+  font-weight: bold;
+}
+/* Arrow */
+.mySelect::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-top: 2px;
+  padding-right: 5px;
+  background: var(--light-color);
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: all 150ms;
+  -o-transition: all 150ms;
+  transition: all 150ms;
+}
+/* Transition */
+.mySelect:hover::after {
+  color: var(--primary-color);
+}
+
+/***********/
+/* polyedre img */
+/***********/
+.container-poly {
+  position: absolute;
+}
+.container-poly img {
+  width: 100%;
+  opacity: 0.1;
+}
+.container-poly-1 {
+  width: 300px;
+  left: 85%;
+}
+.container-poly-2 {
+  width: 300px;
+}
+.container-poly-3 {
+  width: 400px;
+  left: 70%;
+}
+/***********/
+/* header */
+/***********/
+body {
+  background: white;
+}
+#paper-texture {
+  filter: blur(4px);
+  position: fixed;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../static/texture-paper.png");
+  /* background-color: white; */
+  background-size: cover;
+  opacity: 0.5;
+  background-repeat: no-repeat;
+  /* background-blend-mode: overlay; */
+  pointer-events: none;
+}
+#map-texture {
+  position: fixed;
+  z-index: -3;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../static/texture-map.png");
+  background-size: cover;
+  opacity: 0.1;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/***********/
+/* responsive */
+/***********/
+@media screen and (max-width: 750px) {
+  :root {
+    --h1-size: 1.5em;
+  }
+  h2 {
+    font-size: 3em;
+  }
+  h4 {
+    font-size: 2em;
+  }
+
+  #home nav {
+    position: fixed;
+    bottom: 0;
+    right: inherit;
+    left: 0;
+    width: 100vw;
+    background-color: black;
+    color: white;
+    z-index: 100;
+  }
+  #home nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
+  .domaine-section {
+    padding: 75px 0 100px 0;
+  }
+
+  #vignerons .domaine-section:nth-child(2n) .container-domaine {
+    flex-direction: row;
+  }
+  #vignerons .domaine-section:nth-child(2n + 1) .domaine-img {
+    margin-left: 0;
+  }
+  .container-content {
+    margin-bottom: 20px;
+  }
+  .container-all {
+    flex-direction: column;
+  }
+  .list-vigneron-name {
+    display: flex;
+    flex-wrap: wrap;
+    border: inherit;
+    border-left: var(--width-line) solid black;
+    padding-left: 10px;
+    padding-right: 0;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .list-vigneron-name .nom-vigneron {
+    margin: 15px 20px 0 0;
+  }
+  .txt-vigneron {
+    top: 110%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  :root {
+    --h1-size: 1.2em;
+  }
+  /* #paper-texture{
+      height: 200vh;
+  }
+  #map-texture{
+    height: 200vh;
+} */
+  .container-domaine .container-content {
+    min-width: inherit;
+  }
+  .vigneron-saison label,
+  .vigneron-saison select {
+    width: 100%;
+  }
+  footer {
+    padding: 20px 30px 30px 20px;
+    margin-bottom: 50px;
+    background-color: rgba(255, 255, 255, 0.199);
+  }
+  .container-domaine .domaine-img {
+    width: 100%;
+  }
+  footer a {
+    color: black;
+  }
+}

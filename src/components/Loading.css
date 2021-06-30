@@ -1,0 +1,36 @@
+/***********/
+/* loading */
+/***********/
+#loading {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgb(230, 212, 186);
+  transition: transform 500ms ease-in-out;
+  z-index: 100;
+}
+#loading .container-loading {
+  position: absolute;
+  width: 150px;
+  z-index: 0;
+  animation: loading-animation 1500ms infinite alternate ease-out;
+}
+#loading span {
+  font-family: "Baskerville", serif;
+}
+@keyframes loading-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+#loading.anim-load {
+  transform: translateY(-100%);
+}

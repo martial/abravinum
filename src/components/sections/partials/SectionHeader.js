@@ -25,7 +25,7 @@ const SectionHeader = ({
 }) => {
 
   const classes = classNames(
-    'section-header',
+    '',
     className
   );
 
@@ -38,7 +38,7 @@ const SectionHeader = ({
           {...props}
           className={classes}
         >
-          <div className="container-xs">
+          <div className="container-xs center-content">
             {children}
             {data.title &&
               <Component className={
