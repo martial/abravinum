@@ -96,7 +96,7 @@ export class App extends Component {
               <section id="map"></section>
 
               {/* TODO Faire un component pour les contacts */}
-              <Contact data={data.Main[2]}></Contact>
+              <Contact data={data.Main[2]} allData={data}></Contact>
             </main>
           </>
         )}

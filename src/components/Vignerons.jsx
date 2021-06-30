@@ -150,7 +150,6 @@ export default class Vignerons extends Component {
   getImage(vigneron, index, indexVigneron) {
     const imgClassName = indexVigneron === 0 ? "active-img" : "";
     let nameImg = vigneron.region.toLowerCase().replace(/\s/g, "");
-    console.log(nameImg);
     return (
       <img
         src={"static/images/" + nameImg + ".jpg"}
@@ -270,7 +269,7 @@ export default class Vignerons extends Component {
   render() {
     const { data } = this.props;
     const { seasons, currentSeason, formatedSeason } = this.state;
-    console.log(formatedSeason);
+    // console.log(formatedSeason);
     return (
       <>
         <section id="vignerons">
