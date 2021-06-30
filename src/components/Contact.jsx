@@ -1,16 +1,35 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import "./Contact.css";
 
 function Contact(props) {
-  const [currentCatalogue, setCurrentCatalogue] = useState();
   const data = props.data;
+  const [allData, initAllData] = useState(props.allData);
+
+  //get last saison data
+  const keys = Object.keys(props.allData);
+  const lastSaisonData = props.allData[keys[keys.length - 2]];
+  const lastSaisonName = lastSaisonData[0].saison;
+
+  useEffect(() => {
+    initAllData(props.allData);
+  }, [initAllData]);
+
+  const convertString = (el) => {
+    return el
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/ /g, "-")
+      .toLowerCase();
+  };
+
+  const [catalogueSelected, setCatalogueSelected] = useState();
 
   const contentObj = {
     __html: data.content.replace(/(?:\r\n|\r|\n)/g, "<br>"),
   };
 
   const handleChange = (e) => {
-    setCurrentCatalogue(e.target.value);
+    setCatalogueSelected(e.target.value);
   };
 
   return (
@@ -31,8 +50,12 @@ function Contact(props) {
         <h4 className="title-archive">Télécharger nos catalogues</h4>
 
         <div class="catalogue">
-          <a href="https://www.abravinum.com/pdf/catalogue.pdf">
-            Saison Automne 2019
+          <a
+            href={`https://www.abravinum.com/pdf/catalogue-${convertString(
+              lastSaisonName
+            )}.pdf`}
+          >
+            {lastSaisonName}
           </a>
         </div>
 
@@ -41,26 +64,44 @@ function Contact(props) {
             <select
               name="archive"
               id="archive-select"
-              value={currentCatalogue}
+              value={catalogueSelected}
               onChange={handleChange}
             >
               <option selected disabled>
                 Saisons
               </option>
-              <option value="hiver-2019">Hiver 2019</option>
-              <option value="ete-2020">Été 2020</option>
+              {allData &&
+                Object.keys(allData).map(function (season, index) {
+                  if (
+                    index > 1 &&
+                    allData[season] &&
+                    index < allData[season].length
+                  ) {
+                    return (
+                      <>
+                        <p> {allData[season][0].saison}</p>
+                        <option
+                          value={convertString(allData[season][0].saison)}
+                        >
+                          {allData[season][0].saison}
+                        </option>
+                        ;
+                      </>
+                    );
+                  }
+                })}
             </select>
             <a
               href={
-                currentCatalogue &&
-                `https://www.abravinum.com/pdf/catalogue-${currentCatalogue}.pdf`
+                catalogueSelected &&
+                `https://www.abravinum.com/pdf/catalogue-${catalogueSelected}.pdf`
               }
               style={
-                currentCatalogue
+                catalogueSelected
                   ? { background: "#222222" }
                   : { cursor: "inherit", color: "rgb(191, 191, 191)" }
               }
-              download={`catalogue-${currentCatalogue}.pdf`}
+              download={`catalogue-${catalogueSelected}.pdf`}
               id="download-archive-btn"
             >
               Télécharger
